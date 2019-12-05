@@ -2,19 +2,19 @@
 <a href="#" alt="PROJETO ESCOLA MOBILE">
   </a></p>
 
-# PROJETO ESCOLA - MOBILE 
+# PROJETO ESCOLA - MOBILE
 
 ## Description
 
-Aplicação  Hackathon 
+Aplicação Hackathon
 
 ## Installing
 
-`yarn`
+`npm intall`
 
 ## Running
 
-`yarn start`
+`react-native run-android or react-native run-ios`
 
 ## Team
 

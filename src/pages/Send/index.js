@@ -5,20 +5,20 @@ import Background from '../../components/Background';
 import { Container } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 
-export default function Classroom() {
+export default function Send() {
   return (
     <Background>
       <Container>
-        <Text>Classes and Students</Text>
+        <Text>Note</Text>
       </Container>
     </Background>
   );
 }
 
-Classroom.navigationOptions = ({ navigation }) => ({
+Send.navigationOptions = ({ navigation }) => ({
   header: (
     <HeaderBar>
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
+      <HeaderButton onPress={() => navigation.navigate('Help')}>
         <HeaderButtonText active={false}>Help</HeaderButtonText>
       </HeaderButton>
 
@@ -26,8 +26,8 @@ Classroom.navigationOptions = ({ navigation }) => ({
         <HeaderButtonText active={false}>Status</HeaderButtonText>
       </HeaderButton>
 
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Send</HeaderButtonText>
+      <HeaderButton onPress={() => {}}>
+        <HeaderButtonText active>Send</HeaderButtonText>
       </HeaderButton>
     </HeaderBar>
   ),

@@ -1,16 +1,18 @@
 import React from 'react';
+import { Animated, Easing } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Help from './pages/Help';
 
 import Classroom from './pages/Classroom';
 import Note from './pages/Note';
+import Send from './pages/Send';
 
 const Routes = createAppContainer(
   createSwitchNavigator(
@@ -25,7 +27,7 @@ const Routes = createAppContainer(
               },
               {
                 defaultNavigationOptions: {
-                  headerTransparent: true,
+                  headerTransparent: false,
                   headerTintColor: '#024F83',
                   headerLeftContainerStyle: {
                     marginLeft: 20,
@@ -35,7 +37,7 @@ const Routes = createAppContainer(
             ),
             navigationOptions: {
               tabBarVisible: true,
-              tabBarLabel: 'Classes',
+              tabBarLabel: 'Classes and Students',
               tabBarLabelTintColor: '#024F83',
               tabBarIcon: ({ tintColor }) => (
                 <Icon name="group" size={20} color={tintColor} />
@@ -46,15 +48,44 @@ const Routes = createAppContainer(
             screen: createStackNavigator(
               {
                 Dashboard,
+                Send,
+                Help,
               },
               {
                 defaultNavigationOptions: {
-                  headerTransparent: true,
+                  headerTransparent: false,
                   headerTintColor: '#024F83',
                   headerLeftContainerStyle: {
                     marginLeft: 20,
                   },
                 },
+                transitionConfig: () => ({
+                  transitionSpec: {
+                    duration: 750,
+                    easing: Easing.out(Easing.poly(4)),
+                    timing: Animated.timing,
+                    useNativeDriver: true,
+                  },
+                  screenInterpolator: sceneProps => {
+                    const { position, layout, scene } = sceneProps;
+
+                    const thisSceneIndex = scene.index;
+                    const width = layout.initWidth;
+
+                    const translateX = position.interpolate({
+                      inputRange: [
+                        thisSceneIndex - 1,
+                        thisSceneIndex,
+                        thisSceneIndex + 1,
+                      ],
+                      outputRange: [width, 0, 0],
+                    });
+
+                    const slideFromRight = { transform: [{ translateX }] };
+
+                    return slideFromRight;
+                  },
+                }),
               }
             ),
             navigationOptions: {
@@ -73,7 +104,7 @@ const Routes = createAppContainer(
               },
               {
                 defaultNavigationOptions: {
-                  headerTransparent: true,
+                  headerTransparent: false,
                   headerTintColor: '#024F83',
                   headerLeftContainerStyle: {
                     marginLeft: 20,

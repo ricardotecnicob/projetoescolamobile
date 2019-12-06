@@ -9,16 +9,19 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 
+import Classroom from './pages/Classroom';
+import Note from './pages/Note';
+
 const Routes = createAppContainer(
   createSwitchNavigator(
     {
       Login,
       App: createBottomTabNavigator(
         {
-          Classes: {
+          'Classes and Students': { // eslint-disable-line
             screen: createStackNavigator(
               {
-                Dashboard,
+                Classroom,
               },
               {
                 defaultNavigationOptions: {
@@ -39,10 +42,34 @@ const Routes = createAppContainer(
               ),
             },
           },
-          Notes: {
+          'Dashboard': { // eslint-disable-line
             screen: createStackNavigator(
               {
-                Login,
+                Dashboard,
+              },
+              {
+                defaultNavigationOptions: {
+                  headerTransparent: true,
+                  headerTintColor: '#024F83',
+                  headerLeftContainerStyle: {
+                    marginLeft: 20,
+                  },
+                },
+              }
+            ),
+            navigationOptions: {
+              tabBarVisible: true,
+              tabBarLabel: 'Dashboard',
+              tabBarLabelTintColor: '#024F83',
+              tabBarIcon: ({ tintColor }) => (
+                <Icon name="dashboard" size={20} color={tintColor} />
+              ),
+            },
+          },
+          'Notes': { // eslint-disable-line
+            screen: createStackNavigator(
+              {
+                Note,
               },
               {
                 defaultNavigationOptions: {

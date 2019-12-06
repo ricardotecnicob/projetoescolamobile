@@ -9,11 +9,12 @@ export const Container = styled.View`
 `;
 
 export const TInput = styled.TextInput.attrs({
-  placeholderTextColor: 'rgba(0, 0, 0, 0.4)',
+  placeholderTextColor: 'rgba(255, 255, 255, 0.4)',
 })`
   flex: 1;
-  font-size: 15px;
-  text-align: center;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 8px;
   font-weight: bold;
-  color: #000;
+  color: 'rgba(255, 255, 255, 0.8)';
 `;

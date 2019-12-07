@@ -1,15 +1,45 @@
 import React from 'react';
-import { Text } from 'react-native';
 import Background from '../../components/Background';
+import { Text } from 'react-native';
 
-import { Container } from './styles';
+import {
+  Container,
+  BodyTop,
+  BodyMiddle,
+  BodyButtom,
+  TitleText,
+  ListNotes,
+  Item,
+  NumberItem,
+  TextNumber,
+  TextItem,
+  ButtomExit,
+} from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
+import { Body } from '../../components/Body';
 
 export default function Note() {
   return (
     <Background>
       <Container>
-        <Text>Note</Text>
+        <Body style={{ justifyContent: 'space-between' }}>
+          <BodyTop>
+            <TitleText>Bilhetes</TitleText>
+            <ListNotes
+              data={null}
+              keyExtractor={'1'}
+              renderItem={() => {
+                <>
+                  <Text>Oi</Text>
+                </>;
+              }}
+            />
+          </BodyTop>
+          <BodyMiddle />
+          <BodyButtom onPress={() => navigation.navigate('Login')}>
+            <ButtomExit>NOVO BILHETE</ButtomExit>
+          </BodyButtom>
+        </Body>
       </Container>
     </Background>
   );

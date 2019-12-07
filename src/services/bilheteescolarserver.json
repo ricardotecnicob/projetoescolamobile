@@ -1,0 +1,113 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "role": "admin",
+      "name": "Diretor Arlindo Souza",
+      "email": "admin@bilheteescolar.com",
+      "phone": "+5561912341234"
+    },
+    {
+      "id": 2,
+      "role": "teacher",
+      "name": "Marcia Antunes da Costa",
+      "email": "professoramarcia@bilheteescolar.com",
+      "phone": "+5562912341235"
+    },
+    {
+      "id": 3,
+      "role": "father",
+      "name": "Joana Teixeira Aguiar",
+      "email": "joanamae@bilheteescolar.com",
+      "phone": "+5532922341239"
+    },
+    {
+      "id": 4,
+      "role": "father",
+      "name": "Jośe de Jesus",
+      "email": "josepai@bilheteescolar.com",
+      "phone": "+5561912341237"
+    },
+    {
+      "id": 5,
+      "role": "father",
+      "name": "Fabiana Queiroz",
+      "email": "fabianaqueiroz@bilheteescolar.com",
+      "phone": "+5561912341230"
+    },
+    {
+      "id": 6,
+      "role": "father",
+      "name": "Tia Amélia Junqueira",
+      "email": "tiaamelia@bilheteescolar.com"
+    }
+  ],
+  "note": [
+    {
+      "id": 1,
+      "name": "Feriado Dia do Trabalhador",
+      "description": "Nesta sexta-feira, dia 1 de Maio não haverá aula devido ao feriado de Dia do Trabalhador. Desejamos um bom feriado a todos.",
+      "createdAt": "2019-11-12 18:59:25.073+00"
+    },
+    {
+      "id": 2,
+      "name": "Dever de Casa Capítulo 1",
+      "description": "Senhor pai responsável, o dever de casa dessa semana são todas as atividades do Capítulo 1 do Livro de Geografia, por favor assegurar que seu filho faça todas as atividades",
+      "createdAt": "2019-11-13 18:59:25.073+00"
+    },
+    {
+      "id": 3,
+      "name": "Reunião de Pais e Mestres",
+      "description": "Senhores pais e responsáveis, a reunião do segundo bimestre será dia 04/05/2019, por favor comparecer.",
+      "createdAt": "2019-11-14 18:59:25.073+00"
+    }
+  ],
+  "class": [
+    {
+      "id": 1,
+      "grade": 2,
+      "shift": "Matutino",
+      "letter": "A",
+      "students": [
+        {
+          "id": 1,
+          "user_id": 3,
+          "name": "Maria Pinheiro de Almeida"
+        },
+        {
+          "id": 2,
+          "user_id": 4,
+          "name": "Bruna Dias da Silva"
+        },
+        {
+          "id": 3,
+          "user_id": 4,
+          "name": "Matheus Dias da Silva"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "grade": 4,
+      "shift": "Vespertino",
+      "letter": "B",
+      "students": [
+        {
+          "id": 1,
+          "user_id": 4,
+          "name": "Renata Dias da Silva"
+        },
+        {
+          "id": 2,
+          "user_id": 5,
+          "name": "Bruna Queiroz"
+        },
+        {
+          "id": 3,
+          "user_id": 6,
+          "name": "Matheus Junqueira da Silva"
+        }
+      ]
+    }
+  ]
+}

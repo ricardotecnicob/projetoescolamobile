@@ -9,7 +9,7 @@ export default function Send() {
   return (
     <Background>
       <Container>
-        <Text>Note</Text>
+        <Text>Send</Text>
       </Container>
     </Background>
   );

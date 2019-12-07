@@ -4,12 +4,15 @@ import Background from '../../components/Background';
 
 import { Container } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
+import { Body } from '../../components/Body';
 
 export default function Send() {
   return (
     <Background>
       <Container>
-        <Text>Send</Text>
+        <Body>
+          <Text>Send</Text>
+        </Body>
       </Container>
     </Background>
   );

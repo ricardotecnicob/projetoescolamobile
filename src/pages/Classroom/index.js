@@ -4,12 +4,15 @@ import Background from '../../components/Background';
 
 import { Container } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
+import { Body } from '../../components/Body';
 
 export default function Classroom() {
   return (
     <Background>
       <Container>
-        <Text>Classes and Students</Text>
+        <Body>
+          <Text>Classes and Students</Text>
+        </Body>
       </Container>
     </Background>
   );

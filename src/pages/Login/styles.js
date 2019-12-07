@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform, Animated, ImageBackground } from 'react-native';
 import styled from 'styled-components/native';
 
 import Input from '../../components/Input';
@@ -15,9 +15,30 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   background-color: #024f83;
 `;
 
-export const LogoImage = styled.Image`
+export const LogoImage = styled(Animated.Image)`
   height: 250px;
   width: 250px;
+  z-index: 5;
+`;
+
+export const LogoBall = styled(
+  Animated.createAnimatedComponent(ImageBackground)
+)`
+  height: 220px;
+  width: 220px;
+  border-radius: 110;
+  background-color: #eee;
+  z-index: 4;
+`;
+
+export const Cloud = styled(Animated.Image)`
+  position: absolute;
+  top: 0;
+  left: 24;
+
+  width: 130px;
+  height: 100px;
+  z-index: 10;
 `;
 
 export const Form = styled.View`

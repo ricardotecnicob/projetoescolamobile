@@ -56,13 +56,20 @@ export const Title = styled.Text`
   font-weight: bold;
 `;
 
+export const ModalLabel = styled.Text`
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: 16px;
+  margin-bottom: 4px;
+`;
+
 export const TitleEdit = styled(Input)`
-  margin: 20px 0;
   color: rgba(0, 0, 0, 0.6);
 `;
 
 export const DescriptionEdit = styled(Input)`
-  margin: 20px 0;
   flex: 1;
   height: 100%;
   align-items: flex-start;

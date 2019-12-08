@@ -13,7 +13,7 @@ export const Container = styled.View`
 export const TInput = styled.TextInput`
   flex: 1;
   font-size: 16px;
-  text-align: left;
   padding-left: 8px;
   font-weight: bold;
+  color: rgba(0, 0, 0, 0.6);
 `;

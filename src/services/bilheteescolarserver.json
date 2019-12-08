@@ -81,18 +81,30 @@
       "students": [
         {
           "id": 1,
-          "user_id": 3,
-          "name": "Maria Pinheiro de Almeida"
+          "name": "Maria Pinheiro de Almeida",
+          "parent": {
+            "user_id": 3,
+            "name": "José Pinheiro",
+            "phone": "+5561912341230"
+          }
         },
         {
           "id": 2,
-          "user_id": 4,
-          "name": "Bruna Dias da Silva"
+          "name": "Bruna Dias da Silva",
+          "parent": {
+            "user_id": 5,
+            "name": "Marcos Dias da Silva",
+            "phone": "+5561912341231"
+          }
         },
         {
           "id": 3,
-          "user_id": 4,
-          "name": "Matheus Dias da Silva"
+          "name": "Matheus Dias da Silva",
+          "parent": {
+            "user_id": 2,
+            "name": "Joaquim Dias da Silva",
+            "phone": "+5561912341232"
+          }
         }
       ]
     },
@@ -102,23 +114,39 @@
       "students": [
         {
           "id": 4,
-          "user_id": 4,
-          "name": "Renata Dias da Silva"
+          "name": "Renata Dias da Silva",
+          "parent": {
+            "user_id": 4,
+            "name": "José Dias da Silva",
+            "phone": "+5561912341233"
+          }
         },
         {
           "id": 5,
-          "user_id": 5,
-          "name": "Bruna Queiroz"
+          "name": "Bruna Queiroz",
+          "parent": {
+            "user_id": 1,
+            "name": "Paulo Queiroz",
+            "phone": "+5561912341234"
+          }
         },
         {
           "id": 6,
-          "user_id": 6,
-          "name": "Matheus Junqueira da Silva"
+          "name": "Matheus Junqueira da Silva",
+          "parent": {
+            "user_id": 4,
+            "name": "Matheus Junqueira",
+            "phone": "+5561912341235"
+          }
         },
         {
           "id": 7,
-          "user_id": 6,
-          "name": "Carol Junqueira da Silva"
+          "name": "Carol Junqueira da Silva",
+          "parent": {
+            "user_id": 2,
+            "name": "Sofia da Silva",
+            "phone": "+5561912341236"
+          }
         }
       ]
     }

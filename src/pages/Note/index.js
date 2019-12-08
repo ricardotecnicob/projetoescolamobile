@@ -35,13 +35,13 @@ import {
   Title,
   TitleEdit,
   DescriptionEdit,
+  ModalLabel,
 } from '../../components/Modal/styles';
 
 function Note({ isFocused }) {
   const dispatch = useDispatch();
 
   const [dataVisualization, setDataVisualization] = useState([]);
-  const [dataEdition, setDataEdition] = useState([]);
   const [editable, setEditable] = useState(false);
   const [dataView, setDataView] = useState(false);
   const allNotes = useSelector(state => state.note.allNotes);
@@ -55,16 +55,6 @@ function Note({ isFocused }) {
     dispatch(loadNotesRequest());
   }, []);
 
-  useEffect(() => {
-    if (editable) {
-      setNoteTitle(dataEdition.name);
-      setNoteDescription(dataEdition.description);
-    } else {
-      setNoteTitle('');
-      setNoteDescription('');
-    }
-  }, [dataView]);
-
   function handleVisualization(id) {
     note.map(item => (item.id === id ? setDataVisualization(item) : []));
     setDataView(true);
@@ -72,12 +62,15 @@ function Note({ isFocused }) {
 
   function handleModalNew() {
     setEditable(false);
+    setNoteTitle('');
+    setNoteDescription('');
     setModalVisible(true);
   }
 
   function handleModalEdit(item) {
     setEditable(true);
-    setDataEdition(item);
+    setNoteTitle(item.name);
+    setNoteDescription(item.description);
     setModalVisible(true);
   }
 
@@ -165,6 +158,7 @@ function Note({ isFocused }) {
           dismiss={modalClose}
         >
           <Title>{editable ? 'Edição de Bilhete' : 'Cadastrar Bilhete'}</Title>
+          <ModalLabel>Note Title</ModalLabel>
           <TitleEdit
             autoCorrect={false}
             placeholder="Digite o Título do Bilhete"
@@ -173,7 +167,7 @@ function Note({ isFocused }) {
             value={noteTitle}
             onChangeText={setNoteTitle}
           />
-          <Title>Descrição</Title>
+          <ModalLabel>Description</ModalLabel>
           <DescriptionEdit
             autoCorrect={false}
             multiline

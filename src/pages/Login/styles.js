@@ -27,7 +27,7 @@ export const LogoBall = styled(
   height: 220px;
   width: 220px;
   border-radius: 110;
-  background-color: #eee;
+  background-color: #fff;
   z-index: 4;
 `;
 

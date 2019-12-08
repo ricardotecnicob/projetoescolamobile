@@ -1,11 +1,11 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
-import { TouchableOpacity } from 'react-native';
-import Input from '../../components/Input';
+import { Dimensions, TouchableOpacity } from 'react-native';
+
+import Input from '../Input';
 
 export const CustomModal = styled.View`
-  height: ${Dimensions.get('window').height - 20};
-  width: ${Dimensions.get('window').width - 50};
+  height: ${Dimensions.get('window').height * 0.9};
+  width: ${Dimensions.get('window').width * 0.9};
   background: #fff;
   border-radius: 8px;
   flex-direction: column;

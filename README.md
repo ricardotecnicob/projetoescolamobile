@@ -10,37 +10,45 @@ Aplicação Hackathon
 
 ## Installing
 
-`npm intall`
+```console
+yarn install or npm install
+```
 
 ## Running
 
-Criar arquivo .env com seu ip:
+Install dependences.
+
+Create file .env with yout ip.
 
 ```console
 MY_IP=192.168.xx.xx
 ```
 
-Para rodar com Json server.
-
-Abrir local do arquivo.
+To run mocked json-server open the file and run the json-server. Ps: json-server must be installed globally before.
 
 ```console
 cd src/services
-```
-
-Rodar emulador do servidor mock com seu ip. É necessário ter json-server instalado de forma global.
-
-```console
 json-server bilheteescolarserver.json -p 3332 -H 192.168.xx.xx
 ```
 
-`react-native run-android or react-native run-ios`
+Run metro bundler.
+
+
+```console
+yarn start --reset-cache
+```
+
+Install the app.
+
+```console
+react-native run-android
+```
 
 ## Team
 
 - Ricardo Alves
 - Leonardo
-- Eduardo
+- Eduardo Quintino
 - Espaker
 - Felipe
 

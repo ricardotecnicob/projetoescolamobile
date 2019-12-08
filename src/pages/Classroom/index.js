@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import { View, Alert } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '../../components/Background';
 import { Body } from '../../components/Body';
 // import ModalNotes from '../../components/Modal';
-import { Text, View, Alert } from 'react-native';
-import { withNavigationFocus } from 'react-navigation';
 import dataInfo from '../../services/bilheteescolarserver.json';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   BodyTop,
   NewClass,
-  BodyMiddle,
   BodyButtom,
   TitleText,
   ListClass,
   Item,
   TextItem,
-  VisualizationItem,
-  VisualizationTitle,
-  VisualizationBody,
-  VisualizationFotter,
-  NoData,
-  NoDataText,
-  ButtomExit,
+  // BodyMiddle,
+  // VisualizationItem,
+  // VisualizationTitle,
+  // VisualizationBody,
+  // VisualizationFotter,
+  // NoData,
+  // NoDataText,
+  // ButtomExit,
 } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Classroom({ isFocused }) {
   const [dataVisualization, setDataVisualization] = useState([]);
   const [dataEdition, setDataEdition] = useState([]);
   const [editable, setEditable] = useState(false);
-  const [dataView, setDataView] = useState(false);
+  const [currentClass, setCurrentClass] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const { classes } = dataInfo;
 
@@ -39,9 +39,9 @@ function Classroom({ isFocused }) {
     classes.map(item => {
       if (item.id === id) {
         setDataVisualization(item.students);
+        setCurrentClass(`${item.grade}º ${item.letter} ${item.shift}`);
       }
     });
-    setDataView(true);
   }
 
   function handleModalNew() {
@@ -65,7 +65,7 @@ function Classroom({ isFocused }) {
 
   useEffect(() => {
     setDataVisualization([]);
-    setDataView(false);
+    setCurrentClass('');
   }, [isFocused]);
 
   return (
@@ -73,7 +73,7 @@ function Classroom({ isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TitleText>Bilhetes</TitleText>
+            <TitleText>Classes</TitleText>
             <ListClass
               data={classes}
               keyExtractor={item => String(item.id)}
@@ -92,19 +92,25 @@ function Classroom({ isFocused }) {
                       alignItems: 'center',
                     }}
                   >
-                    <TouchableOpacity onPress={() => handleModalEdit(item)}>
-                      <Text style={{ color: '#0000FF' }}>Edit</Text>
+                    <TouchableOpacity
+                      onPress={() => handleModalEdit(item)}
+                      style={{ margin: 10 }}
+                    >
+                      <Icon name="edit" size={25} color="#024f83" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleRemove}>
-                      <Icon name={'clear'} size={25} color={'#FF0000'} />
+                      <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
                   </View>
                 </Item>
               )}
             />
-            <NewClass onPress={handleModalNew}>NOVA TURMA</NewClass>
+            <NewClass onPress={handleModalNew}>New Class</NewClass>
           </BodyTop>
           <BodyButtom>
+            <TitleText>
+              Students - {currentClass === '' ? 'Select Class' : currentClass}
+            </TitleText>
             <ListClass
               data={dataVisualization}
               keyExtractor={item => String(item.id)}
@@ -124,16 +130,16 @@ function Classroom({ isFocused }) {
                     }}
                   >
                     <TouchableOpacity onPress={() => handleModalEdit(item)}>
-                      <Text style={{ color: '#0000FF' }}>Edit</Text>
+                      <Icon name="edit" size={25} color="#024f83" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleRemove}>
-                      <Icon name={'clear'} size={25} color={'#FF0000'} />
+                      <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
                   </View>
                 </Item>
               )}
             />
-            <NewClass onPress={handleModalNew}>NOVO ALUNO</NewClass>
+            <NewClass onPress={handleModalNew}>New Student</NewClass>
           </BodyButtom>
         </Body>
       </Container>

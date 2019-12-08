@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Text, View, Alert } from 'react-native';
+import { View, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { withNavigationFocus } from 'react-navigation';
@@ -84,7 +84,7 @@ function Note({ isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TitleText>Bilhetes</TitleText>
+            <TitleText>Notes</TitleText>
             <ListNotes
               data={allNotes}
               keyExtractor={item => String(item.id)}
@@ -103,8 +103,11 @@ function Note({ isFocused }) {
                       alignItems: 'center',
                     }}
                   >
-                    <TouchableOpacity onPress={() => handleModalEdit(item)}>
-                      <Text style={{ color: '#0000FF' }}>Edit</Text>
+                    <TouchableOpacity
+                      onPress={() => handleModalEdit(item)}
+                      style={{ margin: 10 }}
+                    >
+                      <Icon name="edit" size={25} color="#024f83" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleRemove}>
                       <Icon name="clear" size={25} color="#FF0000" />
@@ -115,18 +118,16 @@ function Note({ isFocused }) {
             />
           </BodyTop>
           <BodyMiddle>
-            <TitleText>Pré-visualização</TitleText>
+            <TitleText>Preview</TitleText>
             <VisualizationItem>
               {dataView ? (
                 <>
-                  <VisualizationTitle>
-                    Senhor pai ou responsável.
-                  </VisualizationTitle>
+                  <VisualizationTitle>Dear mr. ans mrs.,</VisualizationTitle>
                   <VisualizationBody>
                     {dataVisualization.description}
                   </VisualizationBody>
                   <VisualizationFotter>
-                    Atenciosamente, Direção
+                    Sincerily, Direction
                   </VisualizationFotter>
                 </>
               ) : (
@@ -138,7 +139,7 @@ function Note({ isFocused }) {
             </VisualizationItem>
           </BodyMiddle>
           <BodyButtom>
-            <ButtomEdit onPress={handleModalNew}>NOVO BILHETE</ButtomEdit>
+            <ButtomEdit onPress={handleModalNew}>New Note</ButtomEdit>
           </BodyButtom>
         </Body>
       </Container>

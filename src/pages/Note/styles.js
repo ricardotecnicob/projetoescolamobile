@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import Button from '../../components/Button';
+import Buttom from '../../components/Buttom';
 import { Dimensions } from 'react-native';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -89,7 +89,7 @@ export const NoDataText = styled.Text`
   font-size: 25px;
 `;
 
-export const ButtomExit = styled(Button)`
+export const ButtomEdit = styled(Buttom)`
   margin: 0 25px;
   background: #ffb902;
 `;

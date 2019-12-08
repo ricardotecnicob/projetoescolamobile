@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from '../../components/Button';
+import Buttom from '../../components/Buttom';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
@@ -52,7 +52,7 @@ export const TextItem = styled.Text`
   font-weight: bold;
 `;
 
-export const ButtomExit = styled(Button)`
+export const ButtomExit = styled(Buttom)`
   margin: 0 25px;
   background: #dc525a;
 `;

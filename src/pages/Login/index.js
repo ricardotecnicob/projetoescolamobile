@@ -89,7 +89,7 @@ export default function Login({ navigation }) {
           autoCorrect={false}
           autoCapitalize="none"
           placeholder="example@gmail.com"
-          placeholderTextColor="#fff"
+          placeholderTextColor="rgba(255,255,255,0.4)"
           returnKeyType="next"
           onSubmitEditing={() => passwordRef.current.focus()}
           value={email}
@@ -100,6 +100,7 @@ export default function Login({ navigation }) {
         <FormInput
           icon="lock-outline"
           placeholder="********"
+          placeholderTextColor="rgba(255,255,255,0.4)"
           secureTextEntry
           ref={passwordRef}
           returnKeyType="send"

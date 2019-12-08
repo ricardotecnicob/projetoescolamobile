@@ -35,7 +35,7 @@ function Dashboard({ navigation, isFocused }) {
         contStudent = contStudent + 1;
       });
     });
-    note.map(note => {
+    note.map(() => {
       contNotes = contNotes + 1;
     });
     setStudents(contStudent);
@@ -69,8 +69,10 @@ function Dashboard({ navigation, isFocused }) {
               <TextItem>Bilhetes</TextItem>
             </Item>
           </BodyTop>
-          <BodyButtom onPress={() => navigation.navigate('Login')}>
-            <ButtomExit>SAIR</ButtomExit>
+          <BodyButtom>
+            <ButtomExit onPress={() => navigation.navigate('Login')}>
+              SAIR
+            </ButtomExit>
           </BodyButtom>
         </Body>
       </Container>

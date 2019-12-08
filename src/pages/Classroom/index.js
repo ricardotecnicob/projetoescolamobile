@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { View, Alert } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '../../components/Background';
 import { Body } from '../../components/Body';
-// import ModalNotes from '../../components/Modal';
+import Modal from '../../components/Modal';
 import dataInfo from '../../services/bilheteescolarserver.json';
+
+import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import {
   Container,
   BodyTop,
@@ -15,50 +18,73 @@ import {
   TitleText,
   ListClass,
   Item,
+  CardItem,
   TextItem,
-  // BodyMiddle,
-  // VisualizationItem,
-  // VisualizationTitle,
-  // VisualizationBody,
-  // VisualizationFotter,
-  // NoData,
-  // NoDataText,
-  // ButtomExit,
+  TextItemStudent,
 } from './styles';
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
+import { Title, TitleEdit } from '../../components/Modal/styles';
 
 function Classroom({ isFocused }) {
   const [dataVisualization, setDataVisualization] = useState([]);
-  const [dataEdition, setDataEdition] = useState([]);
-  const [editable, setEditable] = useState(false);
-  const [currentClass, setCurrentClass] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
   const { classes } = dataInfo;
 
+  // States to Class Modal
+  const [editingClass, setEditingClass] = useState(false);
+  const [showModalClass, setShowModalClass] = useState(false);
+  const [currentClass, setCurrentClass] = useState(false);
+  const [className, setClassName] = useState('');
+
+  // States to Students Modal
+  const [editingStudent, setEditingStudent] = useState(false);
+  const [showModalStudent, setShowModalStudent] = useState(false);
+  const [studentName, setStudentName] = useState('');
+
+  // Map items from json-server
   function handleVisualization(id) {
     classes.map(item => {
       if (item.id === id) {
         setDataVisualization(item.students);
-        setCurrentClass(`${item.grade}º ${item.letter} ${item.shift}`);
+        setCurrentClass(item.name);
       }
+      return null;
     });
   }
 
-  function handleModalNew() {
-    setEditable(false);
-    setModalVisible(true);
+  // Sets New Class Modal
+  function handleModalNewClass() {
+    setEditingClass(false);
+    setClassName('');
+    setShowModalClass(true);
   }
 
-  function handleModalEdit(item) {
-    setEditable(true);
-    setDataEdition(item);
-    setModalVisible(true);
+  // Sets Edit Class Modal
+  function handleModalEditClass(item) {
+    setEditingClass(true);
+    setClassName(item.name);
+    setShowModalClass(true);
   }
 
-  // function modalClose() {
-  //   setModalVisible(false);
-  // }
+  // Sets New Student Modal
+  function handleModalNewStudent() {
+    setEditingStudent(false);
+    setStudentName('');
+    setShowModalStudent(true);
+  }
 
+  // Sets Edit Student Modal
+  function handleModalEditStudent(item) {
+    setEditingStudent(true);
+    setStudentName(item.name);
+    setShowModalStudent(true);
+  }
+
+  // Close Modal
+  function modalClose() {
+    setShowModalClass(false);
+    setShowModalStudent(false);
+  }
+
+  // Button to delete class or student
   function handleRemove() {
     Alert.alert('Warning', 'Not work in Demo App!');
   }
@@ -83,17 +109,12 @@ function Classroom({ isFocused }) {
                     <TouchableOpacity
                       onPress={() => handleVisualization(item.id)}
                     >
-                      <TextItem>{`${item.grade}º ${item.letter} - ${item.shift}`}</TextItem>
+                      <TextItem>{item.name}</TextItem>
                     </TouchableOpacity>
                   </View>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <CardItem>
                     <TouchableOpacity
-                      onPress={() => handleModalEdit(item)}
+                      onPress={() => handleModalEditClass(item)}
                       style={{ margin: 10 }}
                     >
                       <Icon name="edit" size={25} color="#024f83" />
@@ -101,11 +122,11 @@ function Classroom({ isFocused }) {
                     <TouchableOpacity onPress={handleRemove}>
                       <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
-                  </View>
+                  </CardItem>
                 </Item>
               )}
             />
-            <NewClass onPress={handleModalNew}>New Class</NewClass>
+            <NewClass onPress={handleModalNewClass}>New Class</NewClass>
           </BodyTop>
           <BodyButtom>
             <TitleText>
@@ -117,32 +138,60 @@ function Classroom({ isFocused }) {
               renderItem={({ item }) => (
                 <Item>
                   <View>
-                    <TouchableOpacity
-                      onPress={() => handleVisualization(item.id)}
-                    >
-                      <TextItem>{item.name}</TextItem>
-                    </TouchableOpacity>
+                    <TextItemStudent>{item.name}</TextItemStudent>
                   </View>
-                  <View
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                    }}
-                  >
-                    <TouchableOpacity onPress={() => handleModalEdit(item)}>
+                  <CardItem>
+                    <TouchableOpacity
+                      onPress={() => handleModalEditStudent(item)}
+                      style={{ margin: 10 }}
+                    >
                       <Icon name="edit" size={25} color="#024f83" />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={handleRemove}>
                       <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
-                  </View>
+                  </CardItem>
                 </Item>
               )}
             />
-            <NewClass onPress={handleModalNew}>New Student</NewClass>
+            <NewClass onPress={handleModalNewStudent}>New Student</NewClass>
           </BodyButtom>
         </Body>
       </Container>
+      {showModalClass && (
+        <Modal
+          visible={showModalClass}
+          editable={editingClass}
+          dismiss={modalClose}
+        >
+          <Title>{editingClass ? 'Class Edit' : 'New Class'}</Title>
+          <TitleEdit
+            autoCorrect={false}
+            placeholder="Class name"
+            placeholderTextColor="rgba(0,0,0,0.3)"
+            disableUnderline
+            value={className}
+            onChangeText={setClassName}
+          />
+        </Modal>
+      )}
+      {showModalStudent && (
+        <Modal
+          visible={showModalStudent}
+          editable={editingStudent}
+          dismiss={modalClose}
+        >
+          <Title>{editingStudent ? 'Student Edit' : 'New Student'}</Title>
+          <TitleEdit
+            autoCorrect={false}
+            placeholder="Student name"
+            placeholderTextColor="rgba(0,0,0,0.3)"
+            disableUnderline
+            value={studentName}
+            onChangeText={setStudentName}
+          />
+        </Modal>
+      )}
     </Background>
   );
 }
@@ -164,5 +213,13 @@ Classroom.navigationOptions = ({ navigation }) => ({
     </HeaderBar>
   ),
 });
+
+Classroom.propTypes = {
+  isFocused: PropTypes.bool,
+};
+
+Classroom.defaultProps = {
+  isFocused: false,
+};
 
 export default withNavigationFocus(Classroom);

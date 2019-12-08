@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import { Dimensions, Platform } from 'react-native';
+
 import Buttom from '../../components/Buttom';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -47,7 +48,7 @@ export const Item = styled.View`
 
 export const TextItem = styled.Text`
   font-size: 14px;
-  font-weight: normal;
+  font-weight: bold;
   color: #024f83;
 `;
 
@@ -88,7 +89,8 @@ export const NoData = styled.View`
 
 export const NoDataText = styled.Text`
   color: #ddd;
-  font-size: 25px;
+  font-size: 16px;
+  text-align: center;
 `;
 
 export const ButtomEdit = styled(Buttom)`

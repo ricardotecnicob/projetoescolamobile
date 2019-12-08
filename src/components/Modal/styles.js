@@ -13,24 +13,6 @@ export const CustomModal = styled.View`
   padding: 30px;
 `;
 
-export const Title = styled.Text`
-  font-size: 18px;
-  font-weight: bold;
-`;
-
-export const TitleEdit = styled(Input)`
-  margin: 20px 0;
-  color: rgba(0, 0, 0, 0.6);
-`;
-
-export const DescriptionEdit = styled(Input)`
-  margin: 20px 0;
-  flex: 1;
-  height: 100%;
-  align-items: flex-start;
-  color: rgba(0, 0, 0, 0.6);
-`;
-
 export const ViewButton = styled.View`
   flex: 1;
   flex-direction: row;
@@ -67,4 +49,22 @@ export const TextSave = styled.Text`
   color: #fff;
   font-weight: bold;
   font-size: 18px;
+`;
+
+export const Title = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const TitleEdit = styled(Input)`
+  margin: 20px 0;
+  color: rgba(0, 0, 0, 0.6);
+`;
+
+export const DescriptionEdit = styled(Input)`
+  margin: 20px 0;
+  flex: 1;
+  height: 100%;
+  align-items: flex-start;
+  color: rgba(0, 0, 0, 0.6);
 `;

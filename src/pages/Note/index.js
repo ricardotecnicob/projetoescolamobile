@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -30,6 +31,11 @@ import {
   NoDataText,
   ButtomEdit,
 } from './styles';
+import {
+  Title,
+  TitleEdit,
+  DescriptionEdit,
+} from '../../components/Modal/styles';
 
 function Note({ isFocused }) {
   const dispatch = useDispatch();
@@ -42,16 +48,25 @@ function Note({ isFocused }) {
   const [modalVisible, setModalVisible] = useState(false);
   const { note } = dataInfo;
 
+  const [noteTitle, setNoteTitle] = useState('');
+  const [noteDescription, setNoteDescription] = useState('');
+
   useEffect(() => {
     dispatch(loadNotesRequest());
   }, []);
 
+  useEffect(() => {
+    if (editable) {
+      setNoteTitle(dataEdition.name);
+      setNoteDescription(dataEdition.description);
+    } else {
+      setNoteTitle('');
+      setNoteDescription('');
+    }
+  }, [dataView]);
+
   function handleVisualization(id) {
-    note.map(item => {
-      if (item.id === id) {
-        setDataVisualization(item);
-      }
-    });
+    note.map(item => (item.id === id ? setDataVisualization(item) : []));
     setDataView(true);
   }
 
@@ -122,7 +137,7 @@ function Note({ isFocused }) {
             <VisualizationItem>
               {dataView ? (
                 <>
-                  <VisualizationTitle>Dear mr. ans mrs.,</VisualizationTitle>
+                  <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
                   <VisualizationBody>
                     {dataVisualization.description}
                   </VisualizationBody>
@@ -132,8 +147,8 @@ function Note({ isFocused }) {
                 </>
               ) : (
                 <NoData>
-                  <Icon name="close" size={60} color="#ddd" />
-                  <NoDataText>No Data Selected</NoDataText>
+                  <Icon name="close" size={24} color="#ddd" />
+                  <NoDataText>Please, select a note to preview.</NoDataText>
                 </NoData>
               )}
             </VisualizationItem>
@@ -143,12 +158,33 @@ function Note({ isFocused }) {
           </BodyButtom>
         </Body>
       </Container>
-      <ModalNotes
-        data={dataEdition}
-        visible={modalVisible}
-        editable={editable}
-        dismiss={modalClose}
-      />
+      {modalVisible && (
+        <ModalNotes
+          visible={modalVisible}
+          editable={editable}
+          dismiss={modalClose}
+        >
+          <Title>{editable ? 'Edição de Bilhete' : 'Cadastrar Bilhete'}</Title>
+          <TitleEdit
+            autoCorrect={false}
+            placeholder="Digite o Título do Bilhete"
+            placeholderTextColor="rgba(0,0,0,0.3)"
+            disableUnderline
+            value={noteTitle}
+            onChangeText={setNoteTitle}
+          />
+          <Title>Descrição</Title>
+          <DescriptionEdit
+            autoCorrect={false}
+            multiline
+            placeholder="Digite a descrição do Bilhete"
+            placeholderTextColor="rgba(0,0,0,0.3)"
+            disableUnderline
+            value={noteDescription}
+            onChangeText={setNoteDescription}
+          />
+        </ModalNotes>
+      )}
     </Background>
   );
 }
@@ -170,5 +206,13 @@ Note.navigationOptions = ({ navigation }) => ({
     </HeaderBar>
   ),
 });
+
+Note.propTypes = {
+  isFocused: PropTypes.bool,
+};
+
+Note.defaultProps = {
+  isFocused: false,
+};
 
 export default withNavigationFocus(Note);

@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Dimensions, Alert } from 'react-native';
 import Modal from 'react-native-modal';
 import PropTypes from 'prop-types';
 import {
   CustomModal,
-  Title,
-  TitleEdit,
-  DescriptionEdit,
   ViewButton,
   CancelButton,
   TextCancel,
@@ -15,24 +12,11 @@ import {
 } from './styles';
 
 export default function ModalNotes(props) {
-  const { data, editable, visible, dismiss, ...restProps } = props;
-
-  const [noteTitle, setNoteTitle] = useState('');
-  const [noteDescription, setNoteDescription] = useState('');
+  const { editable, visible, dismiss, children, ...restProps } = props;
 
   function close() {
     dismiss();
   }
-
-  useEffect(() => {
-    if (editable) {
-      setNoteTitle(data.name);
-      setNoteDescription(data.description);
-    } else {
-      setNoteTitle('');
-      setNoteDescription('');
-    }
-  }, [visible]);
 
   function handleSave() {
     Alert.alert('Warning', 'Not work in Demo App!');
@@ -47,31 +31,14 @@ export default function ModalNotes(props) {
       {...restProps}
     >
       <CustomModal>
-        <Title>{editable ? 'Edição de Bilhete' : 'Cadastrar Bilhete'}</Title>
-        <TitleEdit
-          autoCorrect={false}
-          placeholder="Digite o Título do Bilhete"
-          placeholderTextColor="rgba(0,0,0,0.3)"
-          disableUnderline={true}
-          value={noteTitle}
-          onChangeText={setNoteTitle}
-        />
-        <Title>Descrição</Title>
-        <DescriptionEdit
-          autoCorrect={false}
-          multiline={true}
-          placeholder="Digite a descrição do Bilhete"
-          placeholderTextColor="rgba(0,0,0,0.3)"
-          disableUnderline={true}
-          value={noteDescription}
-          onChangeText={setNoteDescription}
-        />
+        {children}
+
         <ViewButton>
           <CancelButton onPress={close}>
-            <TextCancel>Cancelar</TextCancel>
+            <TextCancel>Cancel</TextCancel>
           </CancelButton>
           <SaveButton onPress={handleSave}>
-            <TextSave>Salvar</TextSave>
+            <TextSave>Save</TextSave>
           </SaveButton>
         </ViewButton>
       </CustomModal>
@@ -82,11 +49,10 @@ export default function ModalNotes(props) {
 ModalNotes.propTypes = {
   visible: PropTypes.bool.isRequired,
   dismiss: PropTypes.func.isRequired,
-  data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   editable: PropTypes.bool,
+  children: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 ModalNotes.defaultProps = {
-  visible: false,
   editable: false,
 };

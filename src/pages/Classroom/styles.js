@@ -25,6 +25,7 @@ export const TitleText = styled.Text`
   font-weight: bold;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.7);
+  margin-top: 3px;
 `;
 
 export const ListClass = styled.FlatList`
@@ -42,7 +43,19 @@ export const Item = styled.View`
   margin: 10px 0px 0 0;
 `;
 
+export const CardItem = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
 export const TextItem = styled.Text`
+  font-size: 14px;
+  font-weight: normal;
+  color: #024f83;
+  font-weight: bold;
+`;
+
+export const TextItemStudent = styled.Text`
   font-size: 14px;
   font-weight: normal;
   color: #024f83;

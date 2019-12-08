@@ -77,9 +77,7 @@
   "classes": [
     {
       "id": 1,
-      "grade": 2,
-      "shift": "Matutino",
-      "letter": "A",
+      "name": "2º A Matutino",
       "students": [
         {
           "id": 1,
@@ -100,24 +98,27 @@
     },
     {
       "id": 2,
-      "grade": 4,
-      "shift": "Vespertino",
-      "letter": "B",
+      "name": "3º B Vespertino",
       "students": [
         {
-          "id": 1,
+          "id": 4,
           "user_id": 4,
           "name": "Renata Dias da Silva"
         },
         {
-          "id": 2,
+          "id": 5,
           "user_id": 5,
           "name": "Bruna Queiroz"
         },
         {
-          "id": 3,
+          "id": 6,
           "user_id": 6,
           "name": "Matheus Junqueira da Silva"
+        },
+        {
+          "id": 7,
+          "user_id": 6,
+          "name": "Carol Junqueira da Silva"
         }
       ]
     }

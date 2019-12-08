@@ -1,9 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import Background from '../../components/Background';
+<<<<<<< HEAD
+import { useSelector, useDispatch } from 'react-redux';
 import { Text, View } from 'react-native';
-import { withNavigationFocus } from 'react-navigation';
-import dataInfo from '../../services/bilheteescolarserver.json';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+=======
+import Background from '../../components/Background';
+import { Body } from '../../components/Body';
+import ModalNotes from '../../components/Modal';
+import { Text, View, Alert } from 'react-native';
+>>>>>>> new_notes
+import { withNavigationFocus } from 'react-navigation';
+
+import { loadNotesRequest } from '../../store/modules/note/actions';
+
+import Background from '../../components/Background';
+import dataInfo from '../../services/bilheteescolarserver.json';
+
 import {
   Container,
   BodyTop,
@@ -19,16 +32,32 @@ import {
   VisualizationFotter,
   NoData,
   NoDataText,
-  ButtomExit,
+  ButtomEdit,
 } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
+<<<<<<< HEAD
 import { Body } from '../../components/Body';
+=======
 import { TouchableOpacity } from 'react-native-gesture-handler';
+>>>>>>> new_notes
 
 function Note({ isFocused }) {
+  const dispatch = useDispatch();
+
   const [dataVisualization, setDataVisualization] = useState([]);
+  const [dataEdition, setDataEdition] = useState([]);
+  const [editable, setEditable] = useState(false);
   const [dataView, setDataView] = useState(false);
+<<<<<<< HEAD
+  const allNotes = useSelector(state => state.note.allNotes);
+=======
+  const [modalVisible, setModalVisible] = useState(false);
+>>>>>>> new_notes
   const { note } = dataInfo;
+
+  useEffect(() => {
+    dispatch(loadNotesRequest());
+  }, []);
 
   function handleVisualization(id) {
     note.map(item => {
@@ -37,6 +66,25 @@ function Note({ isFocused }) {
       }
     });
     setDataView(true);
+  }
+
+  function handleModalNew() {
+    setEditable(false);
+    setModalVisible(true);
+  }
+
+  function handleModalEdit(item) {
+    setEditable(true);
+    setDataEdition(item);
+    setModalVisible(true);
+  }
+
+  function modalClose() {
+    setModalVisible(false);
+  }
+
+  function handleRemove() {
+    Alert.alert('Warning', 'Not work in Demo App!');
   }
 
   useEffect(() => {
@@ -51,7 +99,7 @@ function Note({ isFocused }) {
           <BodyTop>
             <TitleText>Bilhetes</TitleText>
             <ListNotes
-              data={note}
+              data={allNotes}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) => (
                 <Item>
@@ -68,11 +116,16 @@ function Note({ isFocused }) {
                       alignItems: 'center',
                     }}
                   >
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => handleModalEdit(item)}>
                       <Text style={{ color: '#0000FF' }}>Edit</Text>
                     </TouchableOpacity>
+<<<<<<< HEAD
                     <TouchableOpacity onPress={() => {}}>
+                      <Icon name="clear" size={25} color="#FF0000" />
+=======
+                    <TouchableOpacity onPress={handleRemove}>
                       <Icon name={'clear'} size={25} color={'#FF0000'} />
+>>>>>>> new_notes
                     </TouchableOpacity>
                   </View>
                 </Item>
@@ -96,17 +149,23 @@ function Note({ isFocused }) {
                 </>
               ) : (
                 <NoData>
-                  <Icon name={'close'} size={60} color={'#ddd'} />
+                  <Icon name="close" size={60} color="#ddd" />
                   <NoDataText>No Data Selected</NoDataText>
                 </NoData>
               )}
             </VisualizationItem>
           </BodyMiddle>
-          <BodyButtom onPress={() => navigation.navigate('Login')}>
-            <ButtomExit>NOVO BILHETE</ButtomExit>
+          <BodyButtom>
+            <ButtomEdit onPress={handleModalNew}>NOVO BILHETE</ButtomEdit>
           </BodyButtom>
         </Body>
       </Container>
+      <ModalNotes
+        data={dataEdition}
+        visible={modalVisible}
+        editable={editable}
+        dismiss={modalClose}
+      />
     </Background>
   );
 }

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Background from '../../components/Background';
-
+import { withNavigationFocus } from 'react-navigation';
+import dataInfo from '../../services/bilheteescolarserver.json';
 import {
   Container,
   BodyTop,
@@ -17,7 +18,31 @@ import {
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import { Body } from '../../components/Body';
 
-export default function Dashboard({ navigation }) {
+function Dashboard({ navigation, isFocused }) {
+  const [dataClass, setDataClass] = useState(0);
+  const [students, setStudents] = useState(0);
+  const [notes, setNotes] = useState(0);
+
+  const { classes, note } = dataInfo;
+
+  useEffect(() => {
+    let contClass = 0;
+    let contStudent = 0;
+    let contNotes = 0;
+    classes.map(item => {
+      contClass = contClass + 1;
+      item.students.map(student => {
+        contStudent = contStudent + 1;
+      });
+    });
+    note.map(note => {
+      contNotes = contNotes + 1;
+    });
+    setStudents(contStudent);
+    setDataClass(contClass);
+    setNotes(contNotes);
+  }, [isFocused]);
+
   return (
     <Background>
       <Container>
@@ -27,19 +52,19 @@ export default function Dashboard({ navigation }) {
             <TextTeacher>Professor João da Silva</TextTeacher>
             <Item>
               <NumberItem>
-                <TextNumber>4</TextNumber>
+                <TextNumber>{dataClass}</TextNumber>
               </NumberItem>
               <TextItem>Turmas</TextItem>
             </Item>
             <Item>
               <NumberItem>
-                <TextNumber>20</TextNumber>
+                <TextNumber>{students}</TextNumber>
               </NumberItem>
               <TextItem>Alunos</TextItem>
             </Item>
             <Item>
               <NumberItem>
-                <TextNumber>14</TextNumber>
+                <TextNumber>{notes}</TextNumber>
               </NumberItem>
               <TextItem>Bilhetes</TextItem>
             </Item>
@@ -76,3 +101,5 @@ Dashboard.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
+
+export default withNavigationFocus(Dashboard);

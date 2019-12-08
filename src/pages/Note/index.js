@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Background from '../../components/Background';
-import { Text } from 'react-native';
-
+import { Text, View } from 'react-native';
+import { withNavigationFocus } from 'react-navigation';
+import dataInfo from '../../services/bilheteescolarserver.json';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
   Container,
   BodyTop,
@@ -10,15 +12,38 @@ import {
   TitleText,
   ListNotes,
   Item,
-  NumberItem,
-  TextNumber,
   TextItem,
+  VisualizationItem,
+  VisualizationTitle,
+  VisualizationBody,
+  VisualizationFotter,
+  NoData,
+  NoDataText,
   ButtomExit,
 } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import { Body } from '../../components/Body';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function Note() {
+function Note({ isFocused }) {
+  const [dataVisualization, setDataVisualization] = useState([]);
+  const [dataView, setDataView] = useState(false);
+  const { note } = dataInfo;
+
+  function handleVisualization(id) {
+    note.map(item => {
+      if (item.id === id) {
+        setDataVisualization(item);
+      }
+    });
+    setDataView(true);
+  }
+
+  useEffect(() => {
+    setDataVisualization([]);
+    setDataView(false);
+  }, [isFocused]);
+
   return (
     <Background>
       <Container>
@@ -26,16 +51,57 @@ export default function Note() {
           <BodyTop>
             <TitleText>Bilhetes</TitleText>
             <ListNotes
-              data={null}
-              keyExtractor={'1'}
-              renderItem={() => {
-                <>
-                  <Text>Oi</Text>
-                </>;
-              }}
+              data={note}
+              keyExtractor={item => String(item.id)}
+              renderItem={({ item }) => (
+                <Item>
+                  <View>
+                    <TouchableOpacity
+                      onPress={() => handleVisualization(item.id)}
+                    >
+                      <TextItem>{item.name}</TextItem>
+                    </TouchableOpacity>
+                  </View>
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <TouchableOpacity onPress={() => {}}>
+                      <Text style={{ color: '#0000FF' }}>Edit</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => {}}>
+                      <Icon name={'clear'} size={25} color={'#FF0000'} />
+                    </TouchableOpacity>
+                  </View>
+                </Item>
+              )}
             />
           </BodyTop>
-          <BodyMiddle />
+          <BodyMiddle>
+            <TitleText>Pré-visualização</TitleText>
+            <VisualizationItem>
+              {dataView ? (
+                <>
+                  <VisualizationTitle>
+                    Senhor pai ou responsável.
+                  </VisualizationTitle>
+                  <VisualizationBody>
+                    {dataVisualization.description}
+                  </VisualizationBody>
+                  <VisualizationFotter>
+                    Atenciosamente, Direção
+                  </VisualizationFotter>
+                </>
+              ) : (
+                <NoData>
+                  <Icon name={'close'} size={60} color={'#ddd'} />
+                  <NoDataText>No Data Selected</NoDataText>
+                </NoData>
+              )}
+            </VisualizationItem>
+          </BodyMiddle>
           <BodyButtom onPress={() => navigation.navigate('Login')}>
             <ButtomExit>NOVO BILHETE</ButtomExit>
           </BodyButtom>
@@ -62,3 +128,5 @@ Note.navigationOptions = ({ navigation }) => ({
     </HeaderBar>
   ),
 });
+
+export default withNavigationFocus(Note);

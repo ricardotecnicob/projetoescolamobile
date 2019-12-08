@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Background from '../../components/Background';
+import { useSelector, useDispatch } from 'react-redux';
 import { Text, View } from 'react-native';
-import { withNavigationFocus } from 'react-navigation';
-import dataInfo from '../../services/bilheteescolarserver.json';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { withNavigationFocus } from 'react-navigation';
+
+import { loadNotesRequest } from '../../store/modules/note/actions';
+
+import Background from '../../components/Background';
+import dataInfo from '../../services/bilheteescolarserver.json';
+
 import {
   Container,
   BodyTop,
@@ -23,12 +29,18 @@ import {
 } from './styles';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import { Body } from '../../components/Body';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Note({ isFocused }) {
+  const dispatch = useDispatch();
+
   const [dataVisualization, setDataVisualization] = useState([]);
   const [dataView, setDataView] = useState(false);
+  const allNotes = useSelector(state => state.note.allNotes);
   const { note } = dataInfo;
+
+  useEffect(() => {
+    dispatch(loadNotesRequest());
+  }, []);
 
   function handleVisualization(id) {
     note.map(item => {
@@ -51,7 +63,7 @@ function Note({ isFocused }) {
           <BodyTop>
             <TitleText>Bilhetes</TitleText>
             <ListNotes
-              data={note}
+              data={allNotes}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) => (
                 <Item>
@@ -72,7 +84,7 @@ function Note({ isFocused }) {
                       <Text style={{ color: '#0000FF' }}>Edit</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {}}>
-                      <Icon name={'clear'} size={25} color={'#FF0000'} />
+                      <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
                   </View>
                 </Item>
@@ -96,7 +108,7 @@ function Note({ isFocused }) {
                 </>
               ) : (
                 <NoData>
-                  <Icon name={'close'} size={60} color={'#ddd'} />
+                  <Icon name="close" size={60} color="#ddd" />
                   <NoDataText>No Data Selected</NoDataText>
                 </NoData>
               )}

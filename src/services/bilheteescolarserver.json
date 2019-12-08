@@ -60,6 +60,18 @@
       "name": "Reunião de Pais e Mestres",
       "description": "Senhores pais e responsáveis, a reunião do segundo bimestre será dia 04/05/2019, por favor comparecer.",
       "createdAt": "2019-11-14 18:59:25.073+00"
+    },
+    {
+      "id": 4,
+      "name": "Passeio de fim de ano",
+      "description": "Senhores pais e responsáveis, o ano letivo está no fim e vamos realizar uma confraternização de alunos, pais e professores. Compareçam com seus filhos dia 19 às 20:00 no pátio da escola para ver apresentações.",
+      "createdAt": "2019-11-14 18:59:25.073+00"
+    },
+    {
+      "id": 5,
+      "name": "Festinha do Joaozinho",
+      "description": "Senhores pais e responsáveis, é o Aniversário do joaozinho dia 12. O evento acontecerá no clube Sport Aqua, por favor clique em OK para autorização.",
+      "createdAt": "2019-11-14 18:59:25.073+00"
     }
   ],
   "classes": [

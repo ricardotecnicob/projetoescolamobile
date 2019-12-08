@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
-<<<<<<< HEAD
 import { useSelector, useDispatch } from 'react-redux';
-import { Text, View } from 'react-native';
+import { Text, View, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-=======
+import { withNavigationFocus } from 'react-navigation';
+
 import Background from '../../components/Background';
 import { Body } from '../../components/Body';
 import ModalNotes from '../../components/Modal';
-import { Text, View, Alert } from 'react-native';
->>>>>>> new_notes
-import { withNavigationFocus } from 'react-navigation';
-
 import { loadNotesRequest } from '../../store/modules/note/actions';
 
-import Background from '../../components/Background';
 import dataInfo from '../../services/bilheteescolarserver.json';
 
+import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import {
   Container,
   BodyTop,
@@ -34,12 +30,6 @@ import {
   NoDataText,
   ButtomEdit,
 } from './styles';
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
-<<<<<<< HEAD
-import { Body } from '../../components/Body';
-=======
-import { TouchableOpacity } from 'react-native-gesture-handler';
->>>>>>> new_notes
 
 function Note({ isFocused }) {
   const dispatch = useDispatch();
@@ -48,11 +38,8 @@ function Note({ isFocused }) {
   const [dataEdition, setDataEdition] = useState([]);
   const [editable, setEditable] = useState(false);
   const [dataView, setDataView] = useState(false);
-<<<<<<< HEAD
   const allNotes = useSelector(state => state.note.allNotes);
-=======
   const [modalVisible, setModalVisible] = useState(false);
->>>>>>> new_notes
   const { note } = dataInfo;
 
   useEffect(() => {
@@ -119,13 +106,8 @@ function Note({ isFocused }) {
                     <TouchableOpacity onPress={() => handleModalEdit(item)}>
                       <Text style={{ color: '#0000FF' }}>Edit</Text>
                     </TouchableOpacity>
-<<<<<<< HEAD
-                    <TouchableOpacity onPress={() => {}}>
-                      <Icon name="clear" size={25} color="#FF0000" />
-=======
                     <TouchableOpacity onPress={handleRemove}>
-                      <Icon name={'clear'} size={25} color={'#FF0000'} />
->>>>>>> new_notes
+                      <Icon name="clear" size={25} color="#FF0000" />
                     </TouchableOpacity>
                   </View>
                 </Item>

@@ -52,5 +52,8 @@ export const CheckboxText = styled.Text`
 export const ButtonSend = styled(Buttom)`
   margin: 0 25px;
   background: #024f83;
-  margin-top: 90px;
+`;
+
+export const ListClasses = styled.FlatList`
+  height: ${Dimensions.get('window').height / 3};
 `;

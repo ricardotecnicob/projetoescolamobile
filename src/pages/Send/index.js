@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 
 import Background from '../../components/Background';
 import Checkbox from '../../components/Checkbox';
@@ -13,6 +14,7 @@ import {
   TitleText,
   BodySend,
   ButtonSend,
+  ListClasses,
 } from './styles';
 import { Body } from '../../components/Body';
 
@@ -65,18 +67,33 @@ export default function Send() {
 
     setClasses(currentState);
   }
+  // Helps track State in development
+  // useEffect(() => {
+  //   console.tron.log(classes);
+  // }, [classes]);
 
   function handleChangeStudent(classroomId, studentId) {
     let currentState = classes;
 
     currentState = currentState.map(item => {
+      let studentsCheckedCount = 0;
       if (item.id === classroomId) {
         item.students.map(subitem => {
           if (subitem.id === studentId) {
             subitem.checked = !subitem.checked;
           }
+          if (subitem.checked) {
+            studentsCheckedCount += 1;
+          }
           return subitem;
         });
+        // Controll Class Checkbox
+        if (studentsCheckedCount === item.students.length) {
+          item.checked = true;
+        }
+        if (studentsCheckedCount < item.students.length) {
+          item.checked = false;
+        }
       }
       return item;
     });
@@ -86,6 +103,10 @@ export default function Send() {
 
   function handleSend() {
     console.tron.log(classes);
+    Alert.alert(
+      'Sendind SMS',
+      'In a couple minutes all parents shall receive your note.'
+    );
   }
 
   return (
@@ -94,33 +115,38 @@ export default function Send() {
         <Body>
           <BodySend>
             <TitleText>Send</TitleText>
-            {/* Classes */}
-            {classes.map(classroom => (
-              <ViewCheckboxes key={classroom.id}>
-                <ViewCheckboxClass>
-                  <Checkbox
-                    value={classroom.checked}
-                    onChange={() => handleChangeClass(classroom)}
-                  />
-                  <CheckboxText>{classroom.name}</CheckboxText>
-                </ViewCheckboxClass>
 
-                {/* Students */}
-                {classroom.students.map(student => (
-                  <ViewCheckboxStudent key={student.name}>
+            {/* Classes */}
+            <ListClasses
+              data={classes}
+              keyExtractor={item => String(item.id)}
+              renderItem={({ item: classroom }) => (
+                <ViewCheckboxes>
+                  <ViewCheckboxClass>
                     <Checkbox
-                      value={student.checked}
-                      onChange={() =>
-                        handleChangeStudent(classroom.id, student.id)
-                      }
+                      value={classroom.checked}
+                      onChange={() => handleChangeClass(classroom)}
                     />
-                    <CheckboxText>
-                      {student.name} | {student.parent.name}
-                    </CheckboxText>
-                  </ViewCheckboxStudent>
-                ))}
-              </ViewCheckboxes>
-            ))}
+                    <CheckboxText>{classroom.name}</CheckboxText>
+                  </ViewCheckboxClass>
+
+                  {/* Students */}
+                  {classroom.students.map(student => (
+                    <ViewCheckboxStudent key={student.name}>
+                      <Checkbox
+                        value={student.checked}
+                        onChange={() =>
+                          handleChangeStudent(classroom.id, student.id)
+                        }
+                      />
+                      <CheckboxText>
+                        {student.name} | {student.parent.name}
+                      </CheckboxText>
+                    </ViewCheckboxStudent>
+                  ))}
+                </ViewCheckboxes>
+              )}
+            />
           </BodySend>
           <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>
         </Body>

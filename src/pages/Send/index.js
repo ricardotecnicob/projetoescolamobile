@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '../../components/Background';
 import Checkbox from '../../components/Checkbox';
+import Selector from '../../components/Selector';
 import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 
 import {
@@ -15,6 +17,12 @@ import {
   BodySend,
   ButtonSend,
   ListClasses,
+  VisualizationItem,
+  VisualizationTitle,
+  VisualizationBody,
+  VisualizationFotter,
+  NoData,
+  NoDataText,
 } from './styles';
 import { Body } from '../../components/Body';
 
@@ -22,8 +30,11 @@ import dataInfo from '../../services/bilheteescolarserver.json';
 
 export default function Send() {
   const { classes: mockedClasses } = dataInfo;
+  const { note: notesToPick } = dataInfo;
 
   const [classes, setClasses] = useState([]);
+  const [pickedNote, setPickedNote] = useState('');
+  const [previewDescription, setPreviewDescription] = useState('');
 
   // Initialize all students with checkbox marked false
   useEffect(() => {
@@ -109,6 +120,11 @@ export default function Send() {
     );
   }
 
+  useEffect(() => {
+    const preview = notesToPick.find(item => item.name === pickedNote) || '';
+    setPreviewDescription(preview.description);
+  }, [pickedNote]); // eslint-disable-line
+
   return (
     <Background>
       <Container>
@@ -147,6 +163,31 @@ export default function Send() {
                 </ViewCheckboxes>
               )}
             />
+            <TitleText>Note</TitleText>
+            <Selector
+              selectedValue={pickedNote}
+              onValueChange={value => setPickedNote(value)}
+              soptions={notesToPick}
+              mode="dialog"
+              icon="keyboard-arrow-down"
+              name="picknote"
+            />
+            <VisualizationItem>
+              {pickedNote !== '' ? (
+                <>
+                  <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
+                  <VisualizationBody>{previewDescription}</VisualizationBody>
+                  <VisualizationFotter>
+                    Sincerily, Direction
+                  </VisualizationFotter>
+                </>
+              ) : (
+                <NoData>
+                  <Icon name="close" size={24} color="#ddd" />
+                  <NoDataText>Please, select a note to preview.</NoDataText>
+                </NoData>
+              )}
+            </VisualizationItem>
           </BodySend>
           <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>
         </Body>

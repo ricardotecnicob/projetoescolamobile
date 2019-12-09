@@ -55,5 +55,50 @@ export const ButtonSend = styled(Buttom)`
 `;
 
 export const ListClasses = styled.FlatList`
-  height: ${Dimensions.get('window').height / 3};
+  height: ${Dimensions.get('window').height * 0.5};
+`;
+
+export const VisualizationItem = styled.View`
+  flex: 1;
+  background: #fff;
+  border: 1px solid #ececec;
+  margin-top: 5px;
+  border-radius: 4px;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  min-height: 100;
+`;
+
+export const VisualizationTitle = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+export const VisualizationBody = styled.Text.attrs({
+  numberOfLines: 4,
+})`
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+export const VisualizationFotter = styled.Text`
+  font-size: 12px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.5);
+`;
+
+export const NoData = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  height: 100;
+`;
+
+export const NoDataText = styled.Text`
+  color: #ddd;
+  font-size: 16px;
+  text-align: center;
 `;

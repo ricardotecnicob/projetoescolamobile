@@ -12,8 +12,6 @@ export default function note(state = INITIAL_STATE, action) {
         break;
       }
       case '@note/LOAD_NOTES_SUCCESS': {
-        console.tron.log('Já no succes, notes está:');
-        console.tron.log(action);
         draft.allNotes = action.payload.allNotes;
         draft.loading = false;
         break;

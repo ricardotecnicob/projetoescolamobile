@@ -23,7 +23,9 @@ import {
   ListNotes,
   ButtonNotes,
   Item,
+  CloseButton,
   TextItem,
+  VisualizationHeader,
   VisualizationItem,
   VisualizationTitle,
   VisualizationBody,
@@ -98,6 +100,7 @@ function Note({ isFocused }) {
             <ListNotes
               data={allNotes}
               keyExtractor={item => String(item.id)}
+              preview={dataView}
               renderItem={({ item }) => (
                 <Item>
                   <View>
@@ -125,34 +128,31 @@ function Note({ isFocused }) {
               )}
             />
           </BodyTop>
-          <BodyMiddle>
-            <TitleView>
-              <TitleText active>Preview</TitleText>
-              <TitleText active={false}>
-                {dataVisualization.name === undefined
-                  ? 'Select a Note'
-                  : dataVisualization.name}
-              </TitleText>
-            </TitleView>
-            <VisualizationItem>
-              {dataView ? (
-                <>
-                  <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
-                  <VisualizationBody>
-                    {dataVisualization.description}
-                  </VisualizationBody>
-                  <VisualizationFotter>
-                    Sincerily, Teacher Susan.
-                  </VisualizationFotter>
-                </>
-              ) : (
-                <NoData>
-                  <Icon name="close" size={24} color="#ddd" />
-                  <NoDataText>Please, select a note to preview.</NoDataText>
-                </NoData>
-              )}
-            </VisualizationItem>
-          </BodyMiddle>
+          {dataView ? (
+            <BodyMiddle>
+              <TitleView>
+                <TitleText active>Preview</TitleText>
+                <TitleText active={false}>{dataVisualization.name}</TitleText>
+                <CloseButton onPress={() => setDataView(false)}>
+                  <Icon name="keyboard-arrow-down" size={32} color="#024f83" />
+                </CloseButton>
+              </TitleView>
+
+              <VisualizationItem>
+                <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
+                <VisualizationBody>
+                  {dataVisualization.description}
+                </VisualizationBody>
+                <VisualizationFotter>
+                  Sincerily, Teacher Susan.
+                </VisualizationFotter>
+              </VisualizationItem>
+            </BodyMiddle>
+          ) : (
+            <NoData>
+              <NoDataText>Please, select a note to preview.</NoDataText>
+            </NoData>
+          )}
           <BodyButtom>
             <ButtomEdit onPress={handleModalNew}>New Note</ButtomEdit>
           </BodyButtom>

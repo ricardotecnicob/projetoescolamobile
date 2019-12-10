@@ -1,5 +1,4 @@
-import React from 'react';
-import { iOSUIKit } from 'react-native-typography';
+// import React from 'react';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 

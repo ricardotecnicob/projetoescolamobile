@@ -24,6 +24,8 @@ import {
   CardItem,
   TextItem,
   TextItemStudent,
+  NoData,
+  NoDataText,
 } from './styles';
 import { Title, TitleEdit, ModalLabel } from '../../components/Modal/styles';
 
@@ -145,37 +147,48 @@ function Classroom({ isFocused }) {
             />
             <NewClass onPress={handleModalNewClass}>New Class</NewClass>
           </BodyTop>
-          <BodyButtom>
-            <TitleView>
-              <TitleText active>Students</TitleText>
-              <TitleText active={false}>
-                {currentClass === '' ? 'Select a class' : currentClass}
-              </TitleText>
-            </TitleView>
-            <ListClass
-              data={dataVisualization}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item }) => (
-                <Item clicable={false}>
-                  <View>
-                    <TextItemStudent>{item.name}</TextItemStudent>
-                  </View>
-                  <CardItem>
-                    <TouchableOpacity
-                      onPress={() => handleModalEditStudent(item, currentClass)}
-                      style={{ margin: 10 }}
-                    >
-                      <Icon name="edit" size={25} color="#024f83" />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={handleRemove}>
-                      <Icon name="clear" size={25} color="#FF0000" />
-                    </TouchableOpacity>
-                  </CardItem>
-                </Item>
-              )}
-            />
+
+          {currentClass !== '' ? (
+            <BodyButtom>
+              <TitleView>
+                <TitleText active>Students</TitleText>
+                <TitleText active={false}>
+                  {currentClass === '' ? 'Select a class' : currentClass}
+                </TitleText>
+              </TitleView>
+              <ListClass
+                data={dataVisualization}
+                keyExtractor={item => String(item.id)}
+                renderItem={({ item }) => (
+                  <Item clicable={false}>
+                    <View>
+                      <TextItemStudent>{item.name}</TextItemStudent>
+                    </View>
+                    <CardItem>
+                      <TouchableOpacity
+                        onPress={() =>
+                          handleModalEditStudent(item, currentClass)
+                        }
+                        style={{ margin: 10 }}
+                      >
+                        <Icon name="edit" size={25} color="#024f83" />
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={handleRemove}>
+                        <Icon name="clear" size={25} color="#FF0000" />
+                      </TouchableOpacity>
+                    </CardItem>
+                  </Item>
+                )}
+              />
+            </BodyButtom>
+          ) : (
+            <NoData>
+              <NoDataText>Please, select a class to show students.</NoDataText>
+            </NoData>
+          )}
+          <View style={{ marginHorizontal: 20 }}>
             <NewClass onPress={handleModalNewStudent}>New Student</NewClass>
-          </BodyButtom>
+          </View>
         </Body>
       </Container>
       {showModalClass && (

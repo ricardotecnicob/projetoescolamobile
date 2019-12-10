@@ -131,7 +131,7 @@ export default function Send() {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TitleText>Send</TitleText>
+            <TitleText>Select Students</TitleText>
 
             {/* Classes */}
             <ListClasses
@@ -166,7 +166,7 @@ export default function Send() {
             />
           </BodyTop>
           <BodyMiddle>
-            <TitleText>Note</TitleText>
+            <TitleText>Select Note</TitleText>
             <Selector
               selectedValue={pickedNote}
               onValueChange={value => setPickedNote(value)}
@@ -175,7 +175,7 @@ export default function Send() {
               icon="keyboard-arrow-down"
               name="picknote"
             />
-            <VisualizationItem>
+            {/* <VisualizationItem>
               {pickedNote !== '' ? (
                 <>
                   <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
@@ -190,7 +190,7 @@ export default function Send() {
                   <NoDataText>Please, select a note to preview.</NoDataText>
                 </NoData>
               )}
-            </VisualizationItem>
+            </VisualizationItem> */}
           </BodyMiddle>
           <BodyButtom>
             <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>

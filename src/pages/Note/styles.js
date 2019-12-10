@@ -35,6 +35,7 @@ export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const TitleText = styled.Text`
@@ -45,7 +46,10 @@ export const TitleText = styled.Text`
 `;
 
 export const ListNotes = styled.FlatList`
-  height: ${Dimensions.get('window').height / 3 - 30};
+  height: ${props =>
+    props.preview
+      ? Dimensions.get('window').height / 3 - 30
+      : Dimensions.get('window').height * 0.6};
 `;
 
 export const Item = styled.View`
@@ -64,6 +68,14 @@ export const TextItem = styled.Text`
   font-weight: bold;
   color: #024f83;
 `;
+
+export const VisualizationHeader = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const CloseButton = styled.TouchableOpacity``;
 
 export const VisualizationItem = styled.View`
   flex: 1;

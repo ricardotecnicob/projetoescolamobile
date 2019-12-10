@@ -15,7 +15,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 
 export const BodyTop = styled.View`
   margin: 0 20px;
-  height: ${Dimensions.get('window').height / 3};
+  height: ${Dimensions.get('window').height * 0.55};
 `;
 
 export const BodyMiddle = styled.View`
@@ -30,6 +30,7 @@ export const TitleText = styled.Text`
   font-weight: bold;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.7);
+  margin: 10px 0;
 `;
 
 export const ViewCheckboxClass = styled.View`

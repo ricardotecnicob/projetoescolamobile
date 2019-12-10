@@ -115,7 +115,8 @@ export const NoData = styled.View`
 
 export const NoDataText = styled.Text`
   color: #ddd;
-  font-size: 25px;
+  font-size: 16px;
+  text-align: center;
 `;
 
 export const ButtomExit = styled(Buttom)`

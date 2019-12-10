@@ -37,7 +37,7 @@ export const NumberItem = styled.View`
   margin-top: 10px;
   width: 61;
   margin: 0 15px;
-  background: #ffb902;
+  background: #024f83;
   justify-content: center;
   align-items: center;
   border-radius: 30.5px;

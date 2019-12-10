@@ -1,6 +1,6 @@
 /* eslint-disable global-require */
 import React, { useRef, useState, useEffect } from 'react';
-import { Animated } from 'react-native';
+import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
 import {
@@ -63,6 +63,7 @@ export default function Login({ navigation }) {
   }
 
   return (
+    // <StatusBar barStyle="light-content" backgroundColor="#024f83" />
     <Container>
       <Triangle bottom={70} left={70} />
       <Triangle bottom={80} left={80} />

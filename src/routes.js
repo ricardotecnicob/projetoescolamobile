@@ -1,162 +1,80 @@
 import React from 'react';
-import { Animated, Easing } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
+import { iOSUIKit } from 'react-native-typography';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { createStackNavigator } from 'react-navigation-stack';
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
-import Help from './pages/Help';
 
 import Classroom from './pages/Classroom';
 import Note from './pages/Note';
 import Send from './pages/Send';
 
+const styleTab = {
+  activeTintColor: '#000',
+  labelStyle: [
+    {
+      fontSize: 20,
+    },
+  ],
+  showIcon: false,
+  inactiveTintColor: '#DDD',
+  style: { elevation: 0 },
+  tabStyle: {
+    height: 80,
+    backgroundColor: '#FFF',
+  },
+  scrollEnabled: true,
+};
+
+const option = text => {
+  const optionNav = {
+    tabBarVisible: true,
+    tabBarLabel: `${text}`, //<Text style={[{ fontSize: 18 }]}>{text}</Text>,
+    tabBarOptions: styleTab,
+  };
+
+  return optionNav;
+};
+
 const Routes = createAppContainer(
   createSwitchNavigator(
     {
       Login,
-      App: createBottomTabNavigator(
+      App: createMaterialTopTabNavigator(
         {
-          'Classes and Students': { // eslint-disable-line
-            screen: createStackNavigator(
-              {
-                Classroom,
-              },
-              {
-                defaultNavigationOptions: {
-                  headerTransparent: false,
-                  headerTintColor: '#024F83',
-                  headerLeftContainerStyle: {
-                    marginLeft: 20,
-                  },
-                },
-              }
-            ),
-            navigationOptions: {
-              tabBarVisible: true,
-              tabBarLabel: 'Classes and Students',
-              tabBarLabelTintColor: '#024F83',
-              tabBarIcon: ({ tintColor }) => (
-                <Icon name="group" size={20} color={tintColor} />
-              ),
-            },
+          'Classes and Students': {
+            screen: Classroom,
+            navigationOptions: option('Classroom'),
           },
-          'Dashboard': { // eslint-disable-line
-            screen: createStackNavigator(
-              {
-                Dashboard,
-                Send,
-                Help,
-              },
-              {
-                defaultNavigationOptions: {
-                  headerTransparent: false,
-                  headerTintColor: '#024F83',
-                  headerLeftContainerStyle: {
-                    marginLeft: 20,
-                  },
-                },
-                transitionConfig: () => ({
-                  transitionSpec: {
-                    duration: 750,
-                    easing: Easing.out(Easing.poly(4)),
-                    timing: Animated.timing,
-                    useNativeDriver: true,
-                  },
-                  screenInterpolator: sceneProps => {
-                    const { position, layout, scene } = sceneProps;
-
-                    const thisSceneIndex = scene.index;
-                    const width = layout.initWidth;
-
-                    const translateX = position.interpolate({
-                      inputRange: [
-                        thisSceneIndex - 1,
-                        thisSceneIndex,
-                        thisSceneIndex + 1,
-                      ],
-                      outputRange: [width, 0, 0],
-                    });
-
-                    const slideFromRight = { transform: [{ translateX }] };
-
-                    return slideFromRight;
-                  },
-                }),
-              }
-            ),
-            navigationOptions: {
-              tabBarVisible: true,
-              tabBarLabel: 'Dashboard',
-              tabBarLabelTintColor: '#024F83',
-              tabBarIcon: ({ tintColor }) => (
-                <Icon name="dashboard" size={20} color={tintColor} />
-              ),
-            },
+          Dashboard: {
+            screen: Dashboard,
+            navigationOptions: option('Dashboard'),
           },
-          'Notes': { // eslint-disable-line
-            screen: createStackNavigator(
-              {
-                Note,
-              },
-              {
-                defaultNavigationOptions: {
-                  headerTransparent: false,
-                  headerTintColor: '#024F83',
-                  headerLeftContainerStyle: {
-                    marginLeft: 20,
-                  },
-                },
-              }
-            ),
-            navigationOptions: {
-              tabBarVisible: true,
-              tabBarLabel: 'Notes',
-              tabBarLabelTintColor: '#024F83',
-              tabBarIcon: ({ tintColor }) => (
-                <Icon name="import-contacts" size={20} color={tintColor} />
-              ),
-            },
+          Notes: {
+            screen: Note,
+            navigationOptions: option('Notes'),
+          },
+          Send: {
+            screen: Send,
+            navigationOptions: option('Send'),
           },
         },
         {
           resetOnBlur: true,
           tabBarOptions: {
-            // Para que o teclado fique em cima na bottom bar
             keyboardHidesTabBar: true,
             activeTintColor: '#024F83',
             inactiveTintColor: '#aaa',
-            // fundo da tab bar
-            style: {
-              backgroundColor: '#fff',
-              borderTopColor: '#eee',
-              borderBottomColor: '#fff',
-              paddingTop: 20,
-              paddingBottom: 20,
-              borderBottomWidth: 1,
-              borderTopWidth: 1,
-              height: 80,
-            },
+            scrollEnabled: true,
           },
         }
       ),
     },
     {
-      initialRouteName: 'Login',
+      initialRouteName: 'App',
       headerLayoutPreset: 'center',
       headerBackTitleVisible: false,
-      // defaultNavigationOptions: {
-      //   headerStyle: {
-      //     backgroundColor: '#024F83',
-      //   },
-      //   headerTintColor: '#fff',
-      //   headerTitleStyle: {
-      //     fontWeight: 'bold',
-      //   },
-      // },
     }
   )
 );

@@ -17,6 +17,18 @@ export const BodySend = styled.View`
   margin: 0 20px;
 `;
 
+export const BodyTop = styled.View`
+  margin: 0 20px;
+  height: ${Dimensions.get('window').height / 3};
+`;
+
+export const BodyMiddle = styled.View`
+  flex: 1;
+  margin: 10px 20px;
+`;
+
+export const BodyButtom = styled.View``;
+
 export const TitleText = styled.Text`
   font-size: 14px;
   font-weight: bold;
@@ -50,7 +62,7 @@ export const CheckboxText = styled.Text`
 `;
 
 export const ButtonSend = styled(Buttom)`
-  margin: 0 25px;
+  margin: 0 20px;
   background: #024f83;
 `;
 

@@ -80,23 +80,23 @@ function Dashboard({ navigation, isFocused }) {
   );
 }
 
-Dashboard.navigationOptions = ({ navigation }) => ({
-  header: (
-    <HeaderBar>
-      <HeaderButton onPress={() => navigation.navigate('Help')}>
-        <HeaderButtonText active={false}>Help</HeaderButtonText>
-      </HeaderButton>
+// Dashboard.navigationOptions = ({ navigation }) => ({
+//   header: (
+//     <HeaderBar>
+//       <HeaderButton onPress={() => navigation.navigate('Help')}>
+//         <HeaderButtonText active={false}>Help</HeaderButtonText>
+//       </HeaderButton>
 
-      <HeaderButton onPress={() => {}}>
-        <HeaderButtonText active>Status</HeaderButtonText>
-      </HeaderButton>
+//       <HeaderButton onPress={() => {}}>
+//         <HeaderButtonText active>Status</HeaderButtonText>
+//       </HeaderButton>
 
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Send</HeaderButtonText>
-      </HeaderButton>
-    </HeaderBar>
-  ),
-});
+//       <HeaderButton onPress={() => navigation.navigate('Send')}>
+//         <HeaderButtonText active={false}>Send</HeaderButtonText>
+//       </HeaderButton>
+//     </HeaderBar>
+//   ),
+// });
 
 Dashboard.propTypes = {
   navigation: PropTypes.shape({

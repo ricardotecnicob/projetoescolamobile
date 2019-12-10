@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '../../components/Background';
 import Checkbox from '../../components/Checkbox';
 import Selector from '../../components/Selector';
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 
 import {
   Container,
@@ -14,7 +13,10 @@ import {
   ViewCheckboxes,
   CheckboxText,
   TitleText,
+  BodyTop,
+  BodyMiddle,
   BodySend,
+  BodyButtom,
   ButtonSend,
   ListClasses,
   VisualizationItem,
@@ -128,8 +130,8 @@ export default function Send() {
   return (
     <Background>
       <Container>
-        <Body>
-          <BodySend>
+        <Body style={{ justifyContent: 'space-between' }}>
+          <BodyTop>
             <TitleText>Send</TitleText>
 
             {/* Classes */}
@@ -163,6 +165,8 @@ export default function Send() {
                 </ViewCheckboxes>
               )}
             />
+          </BodyTop>
+          <BodyMiddle>
             <TitleText>Note</TitleText>
             <Selector
               selectedValue={pickedNote}
@@ -188,28 +192,12 @@ export default function Send() {
                 </NoData>
               )}
             </VisualizationItem>
-          </BodySend>
-          <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>
+          </BodyMiddle>
+          <BodyButtom>
+            <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>
+          </BodyButtom>
         </Body>
       </Container>
     </Background>
   );
 }
-
-Send.navigationOptions = ({ navigation }) => ({
-  header: (
-    <HeaderBar>
-      <HeaderButton onPress={() => navigation.navigate('Help')}>
-        <HeaderButtonText active={false}>Help</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Dashboard')}>
-        <HeaderButtonText active={false}>Status</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => {}}>
-        <HeaderButtonText active>Send</HeaderButtonText>
-      </HeaderButton>
-    </HeaderBar>
-  ),
-});

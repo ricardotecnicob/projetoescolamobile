@@ -13,7 +13,6 @@ import { loadNotesRequest } from '../../store/modules/note/actions';
 
 import dataInfo from '../../services/bilheteescolarserver.json';
 
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import {
   Container,
   BodyTop,
@@ -44,15 +43,16 @@ function Note({ isFocused }) {
   const [dataVisualization, setDataVisualization] = useState([]);
   const [editable, setEditable] = useState(false);
   const [dataView, setDataView] = useState(false);
-  const allNotes = useSelector(state => state.note.allNotes);
   const [modalVisible, setModalVisible] = useState(false);
   const { note } = dataInfo;
+
+  const allNotes = note;
 
   const [noteTitle, setNoteTitle] = useState('');
   const [noteDescription, setNoteDescription] = useState('');
 
   useEffect(() => {
-    dispatch(loadNotesRequest());
+    //dispatch(loadNotesRequest());
   }, []);
 
   function handleVisualization(id) {
@@ -182,24 +182,6 @@ function Note({ isFocused }) {
     </Background>
   );
 }
-
-Note.navigationOptions = ({ navigation }) => ({
-  header: (
-    <HeaderBar>
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Help</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Dashboard')}>
-        <HeaderButtonText active={false}>Status</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Send</HeaderButtonText>
-      </HeaderButton>
-    </HeaderBar>
-  ),
-});
 
 Note.propTypes = {
   isFocused: PropTypes.bool,

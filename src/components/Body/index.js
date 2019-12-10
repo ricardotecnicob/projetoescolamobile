@@ -7,9 +7,10 @@ export const Body = styled.View`
   height: ${Dimensions.get('window').height};
   width: ${Dimensions.get('window').width - 40};
   margin-bottom: 20px;
-  margin-top: -26px;
+  margin-top: 0px;
   box-shadow: 10px 5px 5px #000;
   border-radius: 8px;
   padding: 20px 0;
   z-index: 999;
+  elevation: 2;
 `;

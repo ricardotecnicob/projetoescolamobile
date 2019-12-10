@@ -11,7 +11,6 @@ import { Body } from '../../components/Body';
 import Modal from '../../components/Modal';
 import Selector from '../../components/Selector';
 
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import {
   Container,
   BodyTop,
@@ -243,24 +242,6 @@ function Classroom({ isFocused }) {
     </Background>
   );
 }
-
-Classroom.navigationOptions = ({ navigation }) => ({
-  header: (
-    <HeaderBar>
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Help</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Dashboard')}>
-        <HeaderButtonText active={false}>Status</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Send</HeaderButtonText>
-      </HeaderButton>
-    </HeaderBar>
-  ),
-});
 
 Classroom.propTypes = {
   isFocused: PropTypes.bool,

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigationFocus } from 'react-navigation';
+
 import Background from '../../components/Background';
 import dataInfo from '../../services/bilheteescolarserver.json';
 import {
@@ -12,8 +14,8 @@ import {
   Item,
   NumberItem,
   TextNumber,
-  TextItem,
   ButtomExit,
+  ItemIcon,
 } from './styles';
 import { Body } from '../../components/Body';
 
@@ -45,31 +47,68 @@ function Dashboard({ navigation, isFocused }) {
     setNotes(contNotes);
   }, [isFocused]);
 
+  const DashItem = ({
+    size,
+    icon,
+    name,
+    number,
+    backgroundColor = '#024f83',
+    fontColor = '#fff',
+  }) => {
+    return (
+      <Item backgroundColor={backgroundColor}>
+        <NumberItem>
+          <TextNumber fontColor={fontColor}>{number}</TextNumber>
+          <TextNumber fontColor={fontColor} size={parseInt(size, 10)}>
+            {name}
+          </TextNumber>
+        </NumberItem>
+        <ItemIcon name={icon} size={40} color={fontColor} />
+      </Item>
+    );
+  };
+
   return (
     <Background>
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
             <TextWelcome>Welcome!</TextWelcome>
-            <TextTeacher>Inez J. Clark</TextTeacher>
-            <Item>
-              <NumberItem>
-                <TextNumber>{dataClass}</TextNumber>
-              </NumberItem>
-              <TextItem>Classes</TextItem>
-            </Item>
-            <Item>
-              <NumberItem>
-                <TextNumber>{students}</TextNumber>
-              </NumberItem>
-              <TextItem>Students</TextItem>
-            </Item>
-            <Item>
-              <NumberItem>
-                <TextNumber>{notes}</TextNumber>
-              </NumberItem>
-              <TextItem>Notes</TextItem>
-            </Item>
+            <TextTeacher>Teacher Inez J. Clark</TextTeacher>
+            <ScrollView>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Classroom')}
+              >
+                <DashItem
+                  number={dataClass || ''}
+                  size={16}
+                  icon="create"
+                  name="Classes"
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Classroom')}
+              >
+                <DashItem
+                  number={students || ''}
+                  size={20}
+                  icon="people"
+                  name="Students"
+                  backgroundColor="#eee"
+                  fontColor="#333"
+                />
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={() => navigation.navigate('Notes')}>
+                <DashItem
+                  number={notes || ''}
+                  size={20}
+                  icon="note"
+                  name="Notes"
+                />
+              </TouchableOpacity>
+            </ScrollView>
           </BodyTop>
           <BodyButtom>
             <ButtomExit onPress={() => navigation.navigate('Login')}>

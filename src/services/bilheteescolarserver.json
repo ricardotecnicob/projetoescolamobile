@@ -77,7 +77,7 @@
   "classes": [
     {
       "id": 1,
-      "name": "Intro to Psychology",
+      "name": "1th Grade",
       "students": [
         {
           "id": 1,
@@ -110,7 +110,7 @@
     },
     {
       "id": 2,
-      "name": "Composition 1",
+      "name": "2th Grade",
       "students": [
         {
           "id": 4,
@@ -152,7 +152,7 @@
     },
     {
       "id": 3,
-      "name": "Math 1",
+      "name": "6th Grade",
       "students": [
         {
           "id": 8,

@@ -71,6 +71,13 @@ export const NewClass = styled(Buttom)`
   margin: 8px 5px 5px 0;
 `;
 
+export const ButtonClass = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  width: ${Dimensions.get('window').width * 0.6};
+  height: 50;
+`;
+
 export const VisualizationItem = styled.View`
   flex: 1;
   background: #fff;

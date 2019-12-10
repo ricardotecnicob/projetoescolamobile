@@ -21,6 +21,7 @@ import {
   TitleView,
   TitleText,
   ListNotes,
+  ButtonNotes,
   Item,
   TextItem,
   VisualizationItem,
@@ -100,11 +101,9 @@ function Note({ isFocused }) {
               renderItem={({ item }) => (
                 <Item>
                   <View>
-                    <TouchableOpacity
-                      onPress={() => handleVisualization(item.id)}
-                    >
+                    <ButtonNotes onPress={() => handleVisualization(item.id)}>
                       <TextItem>{item.name}</TextItem>
-                    </TouchableOpacity>
+                    </ButtonNotes>
                   </View>
                   <View
                     style={{

@@ -16,6 +16,7 @@ import {
   BodyTop,
   NewClass,
   BodyButtom,
+  ButtonClass,
   TitleView,
   TitleText,
   ListClass,
@@ -124,11 +125,9 @@ function Classroom({ isFocused }) {
               renderItem={({ item }) => (
                 <Item clicable>
                   <View>
-                    <TouchableOpacity
-                      onPress={() => handleVisualization(item.id)}
-                    >
+                    <ButtonClass onPress={() => handleVisualization(item.id)}>
                       <TextItem>{item.name}</TextItem>
-                    </TouchableOpacity>
+                    </ButtonClass>
                   </View>
                   <CardItem>
                     <TouchableOpacity

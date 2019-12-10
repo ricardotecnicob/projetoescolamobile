@@ -24,6 +24,13 @@ export const BodyMiddle = styled.View`
 
 export const BodyButtom = styled.View``;
 
+export const ButtonNotes = styled.TouchableOpacity`
+  display: flex;
+  justify-content: center;
+  width: ${Dimensions.get('window').width * 0.6};
+  height: 50;
+`;
+
 export const TitleView = styled.View`
   display: flex;
   flex-direction: row;

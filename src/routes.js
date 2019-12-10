@@ -11,26 +11,31 @@ import Note from './pages/Note';
 import Send from './pages/Send';
 
 const styleTab = {
-  activeTintColor: '#000',
-  labelStyle: [
-    {
-      fontSize: 20,
-    },
-  ],
+  activeTintColor: '#024F83',
+  labelStyle: {
+    fontSize: 20,
+    fontFamily: 'SF-Pro-Display-Bold',
+  },
   showIcon: false,
   inactiveTintColor: '#DDD',
   style: { elevation: 0 },
   tabStyle: {
     height: 80,
-    backgroundColor: '#FFF',
+    backgroundColor: '#fff',
   },
   scrollEnabled: true,
+  swipeEnabled: true,
+  upperCaseLabel: false,
+  indicatorStyle: {
+    heigth: 82,
+    backgroundColor: 'green',
+  },
 };
 
 const option = text => {
   const optionNav = {
     tabBarVisible: true,
-    tabBarLabel: `${text}`, //<Text style={[{ fontSize: 18 }]}>{text}</Text>,
+    tabBarLabel: `${text}`, // <Text style={[{ fontSize: 18 }]}>{text}</Text>,
     tabBarOptions: styleTab,
   };
 

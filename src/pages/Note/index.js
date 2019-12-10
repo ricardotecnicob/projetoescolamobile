@@ -52,7 +52,7 @@ function Note({ isFocused }) {
   const [noteDescription, setNoteDescription] = useState('');
 
   useEffect(() => {
-    //dispatch(loadNotesRequest());
+    // dispatch(loadNotesRequest());
   }, []);
 
   function handleVisualization(id) {
@@ -135,7 +135,7 @@ function Note({ isFocused }) {
                     {dataVisualization.description}
                   </VisualizationBody>
                   <VisualizationFotter>
-                    Sincerily, Direction
+                    Sincerily, Direction.
                   </VisualizationFotter>
                 </>
               ) : (

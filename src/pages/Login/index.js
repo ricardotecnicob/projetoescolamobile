@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 import React, { useRef, useState, useEffect } from 'react';
 import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';

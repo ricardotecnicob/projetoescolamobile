@@ -5,12 +5,11 @@ export const Body = styled.View`
   flex: 1;
   background: #ffffff;
   height: ${Dimensions.get('window').height};
-  width: ${Dimensions.get('window').width - 40};
-  margin-bottom: 20px;
-  margin-top: 0px;
-  box-shadow: 10px 5px 5px #000;
+  width: ${Dimensions.get('window').width - 16};
+  margin-bottom: 8px;
+  box-shadow: 8px 4px 4px #000;
   border-radius: 8px;
-  padding: 20px 0;
+  padding: 16px 0;
   z-index: 999;
   elevation: 2;
 `;

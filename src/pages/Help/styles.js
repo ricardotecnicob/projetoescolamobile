@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
@@ -7,7 +8,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
 `;
 
 export const Title = styled.Text`

@@ -26,10 +26,6 @@ const styleTab = {
   scrollEnabled: true,
   swipeEnabled: true,
   upperCaseLabel: false,
-  indicatorStyle: {
-    heigth: 82,
-    backgroundColor: 'green',
-  },
 };
 
 const option = text => {
@@ -48,13 +44,13 @@ const Routes = createAppContainer(
       Login,
       App: createMaterialTopTabNavigator(
         {
-          'Classes and Students': {
-            screen: Classroom,
-            navigationOptions: option('Classroom'),
-          },
           Dashboard: {
             screen: Dashboard,
             navigationOptions: option('Dashboard'),
+          },
+          Classroom: {
+            screen: Classroom,
+            navigationOptions: option('Classroom'),
           },
           Notes: {
             screen: Note,

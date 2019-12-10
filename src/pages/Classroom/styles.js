@@ -9,7 +9,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
 `;
 
 export const BodyTop = styled.View`
@@ -20,23 +20,28 @@ export const BodyButtom = styled.View`
   margin: 0 20px 0 20px;
 `;
 
+export const TitleView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const TitleText = styled.Text`
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.7);
-  margin-top: 3px;
+  color: ${props => (props.active ? 'rgba(0, 0, 0, 0.7)' : '#aaa')};
 `;
 
 export const ListClass = styled.FlatList`
-  height: ${Dimensions.get('window').height / 3 - 60};
+  height: ${Dimensions.get('window').height / 3 - 40};
 `;
 
 export const Item = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #024f83;
+  border: 1px solid ${props => (props.clicable === true ? '#024f83' : '#eee')};
   height: 50px;
   border-radius: 4px;
   padding: 0 10px;
@@ -58,12 +63,12 @@ export const TextItem = styled.Text`
 export const TextItemStudent = styled.Text`
   font-size: 14px;
   font-weight: normal;
-  color: #024f83;
+  color: rgba(0, 0, 0, 0.4);
 `;
 
 export const NewClass = styled(Buttom)`
   background: #024f83;
-  margin: 10px 5px 5px 0;
+  margin: 8px 5px 5px 0;
 `;
 
 export const VisualizationItem = styled.View`

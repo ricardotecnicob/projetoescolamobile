@@ -16,6 +16,7 @@ import {
   BodyTop,
   NewClass,
   BodyButtom,
+  TitleView,
   TitleText,
   ListClass,
   Item,
@@ -116,12 +117,12 @@ function Classroom({ isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TitleText>Classes</TitleText>
+            <TitleText active>Classes</TitleText>
             <ListClass
               data={classes}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) => (
-                <Item>
+                <Item clicable>
                   <View>
                     <TouchableOpacity
                       onPress={() => handleVisualization(item.id)}
@@ -146,14 +147,17 @@ function Classroom({ isFocused }) {
             <NewClass onPress={handleModalNewClass}>New Class</NewClass>
           </BodyTop>
           <BodyButtom>
-            <TitleText>
-              Students - {currentClass === '' ? 'Select Class' : currentClass}
-            </TitleText>
+            <TitleView>
+              <TitleText active>Students</TitleText>
+              <TitleText active={false}>
+                {currentClass === '' ? 'Select a class' : currentClass}
+              </TitleText>
+            </TitleView>
             <ListClass
               data={dataVisualization}
               keyExtractor={item => String(item.id)}
               renderItem={({ item }) => (
-                <Item>
+                <Item clicable={false}>
                   <View>
                     <TextItemStudent>{item.name}</TextItemStudent>
                   </View>

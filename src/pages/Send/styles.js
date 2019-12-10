@@ -10,7 +10,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
 `;
 
 export const BodySend = styled.View`
@@ -76,30 +76,27 @@ export const VisualizationItem = styled.View`
   border: 1px solid #ececec;
   margin-top: 5px;
   border-radius: 4px;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  padding: 0 10px 0 10px;
-  min-height: 100;
+  padding: 16px;
 `;
 
 export const VisualizationTitle = styled.Text`
-  font-size: 12px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  align-self: flex-start;
+  color: rgba(0, 0, 0, 0.6);
 `;
 
-export const VisualizationBody = styled.Text.attrs({
-  numberOfLines: 4,
-})`
-  font-size: 12px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
+export const VisualizationBody = styled.Text`
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: justify;
 `;
 
 export const VisualizationFotter = styled.Text`
-  font-size: 12px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+  align-self: flex-end;
+  color: rgba(0, 0, 0, 0.6);
 `;
 
 export const NoData = styled.View`

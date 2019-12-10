@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Platform } from 'react-native';
 import Buttom from '../../components/Buttom';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -8,7 +9,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding: 10px;
 `;
 
 export const BodyTop = styled.View``;

@@ -18,6 +18,7 @@ import {
   BodyTop,
   BodyMiddle,
   BodyButtom,
+  TitleView,
   TitleText,
   ListNotes,
   Item,
@@ -92,7 +93,7 @@ function Note({ isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TitleText>Notes</TitleText>
+            <TitleText active>Notes</TitleText>
             <ListNotes
               data={allNotes}
               keyExtractor={item => String(item.id)}
@@ -126,7 +127,14 @@ function Note({ isFocused }) {
             />
           </BodyTop>
           <BodyMiddle>
-            <TitleText>Preview</TitleText>
+            <TitleView>
+              <TitleText active>Preview</TitleText>
+              <TitleText active={false}>
+                {dataVisualization.name === undefined
+                  ? 'Select a Note'
+                  : dataVisualization.name}
+              </TitleText>
+            </TitleView>
             <VisualizationItem>
               {dataView ? (
                 <>
@@ -135,7 +143,7 @@ function Note({ isFocused }) {
                     {dataVisualization.description}
                   </VisualizationBody>
                   <VisualizationFotter>
-                    Sincerily, Direction.
+                    Sincerily, Teacher Susan.
                   </VisualizationFotter>
                 </>
               ) : (

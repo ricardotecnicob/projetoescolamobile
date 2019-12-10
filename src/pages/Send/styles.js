@@ -13,10 +13,6 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 10px;
 `;
 
-export const BodySend = styled.View`
-  margin: 0 20px;
-`;
-
 export const BodyTop = styled.View`
   margin: 0 20px;
   height: ${Dimensions.get('window').height / 3};

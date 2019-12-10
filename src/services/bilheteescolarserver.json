@@ -3,106 +3,106 @@
     {
       "id": 1,
       "role": "admin",
-      "name": "Diretor Arlindo Souza",
+      "name": "Helen A. Gullickson",
       "email": "admin@bilheteescolar.com",
       "phone": "+5561912341234"
     },
     {
       "id": 2,
       "role": "teacher",
-      "name": "Marcia Antunes da Costa",
+      "name": "Inez J. Clark",
       "email": "professoramarcia@bilheteescolar.com",
       "phone": "+5562912341235"
     },
     {
       "id": 3,
       "role": "father",
-      "name": "Joana Teixeira Aguiar",
+      "name": "Armando A. Melton",
       "email": "joanamae@bilheteescolar.com",
       "phone": "+5532922341239"
     },
     {
       "id": 4,
       "role": "father",
-      "name": "Jośe de Jesus",
+      "name": "Felipe A. Chen",
       "email": "josepai@bilheteescolar.com",
       "phone": "+5561912341237"
     },
     {
       "id": 5,
       "role": "father",
-      "name": "Fabiana Queiroz",
+      "name": "Ann S. Moss",
       "email": "fabianaqueiroz@bilheteescolar.com",
       "phone": "+5561912341230"
     },
     {
       "id": 6,
       "role": "father",
-      "name": "Tia Amélia Junqueira",
+      "name": "Virginia R. Beene",
       "email": "tiaamelia@bilheteescolar.com"
     }
   ],
   "note": [
     {
       "id": 1,
-      "name": "Feriado Dia do Trabalhador",
-      "description": "Nesta sexta-feira, dia 1 de Maio não haverá aula devido ao feriado de Dia do Trabalhador. Desejamos um bom feriado a todos.",
-      "createdAt": "2019-11-12 18:59:25.073+00"
+      "name": "Parents Meeting",
+      "description": "This month's meeting will be August 4th, 2019, please attend.",
+      "createdAt": "2019-11-14 18:59:25.073+00"
     },
     {
       "id": 2,
-      "name": "Dever de Casa Capítulo 1",
-      "description": "Senhor pai responsável, o dever de casa dessa semana são todas as atividades do Capítulo 1 do Livro de Geografia, por favor assegurar que seu filho faça todas as atividades",
+      "name": "Homework Geography",
+      "description": "This week's homework are all activities in Chapter 1 of the Geography Book, please ensure your child does all the activities.",
       "createdAt": "2019-11-13 18:59:25.073+00"
     },
     {
       "id": 3,
-      "name": "Reunião de Pais e Mestres",
-      "description": "Senhores pais e responsáveis, a reunião do segundo bimestre será dia 04/05/2019, por favor comparecer.",
-      "createdAt": "2019-11-14 18:59:25.073+00"
+      "name": "Holiday in Easter",
+      "description": "This Friday, April 21st there will be no class due to the Easter holiday. We wish you a good holiday.",
+      "createdAt": "2019-11-12 18:59:25.073+00"
     },
     {
       "id": 4,
-      "name": "Passeio de fim de ano",
-      "description": "Senhores pais e responsáveis, o ano letivo está no fim e vamos realizar uma confraternização de alunos, pais e professores. Compareçam com seus filhos dia 19 às 20:00 no pátio da escola para ver apresentações.",
+      "name": "John's Party",
+      "description": "February 12th will be John's birthday. It will take place at Sport Aqua club, please click OK to confirm your child's participation.",
       "createdAt": "2019-11-14 18:59:25.073+00"
     },
     {
       "id": 5,
-      "name": "Festinha do Joaozinho",
-      "description": "Senhores pais e responsáveis, é o Aniversário do joaozinho dia 12. O evento acontecerá no clube Sport Aqua, por favor clique em OK para autorização.",
+      "name": "School Party",
+      "description": "The school year is coming to an end and we will host a party for everyone. It will be December 19th at 8:00 pm in the school gym. Hope you all come.",
       "createdAt": "2019-11-14 18:59:25.073+00"
     }
   ],
   "classes": [
     {
       "id": 1,
-      "name": "2º A Matutino",
+      "name": "Intro to Psychology",
       "students": [
         {
           "id": 1,
-          "name": "Maria Pinheiro de Almeida",
+          "name": "Peggy Bates Melton",
           "parent": {
             "user_id": 3,
-            "name": "José Pinheiro",
+            "name": "Armando Bates Melton",
             "phone": "+5561912341230"
           }
         },
         {
           "id": 2,
-          "name": "Bruna Dias da Silva",
+          "name": "Regina Hickman Moss",
           "parent": {
             "user_id": 5,
-            "name": "Marcos Dias da Silva",
+            "name": "Ann Hickman Moss",
             "phone": "+5561912341231"
           }
         },
         {
           "id": 3,
-          "name": "Matheus Dias da Silva",
+          "name": "Jacob Edwards Clark",
           "parent": {
             "user_id": 2,
-            "name": "Joaquim Dias da Silva",
+            "name": "Inez Davies Clark",
             "phone": "+5561912341232"
           }
         }
@@ -110,41 +110,83 @@
     },
     {
       "id": 2,
-      "name": "3º B Vespertino",
+      "name": "Composition 1",
       "students": [
         {
           "id": 4,
-          "name": "Renata Dias da Silva",
+          "name": "Frank Pemberton Chen",
           "parent": {
             "user_id": 4,
-            "name": "José Dias da Silva",
+            "name": "Felipe Pemberton Chen",
             "phone": "+5561912341233"
           }
         },
         {
           "id": 5,
-          "name": "Bruna Queiroz",
+          "name": "Kathleen Alexander Gullickson",
           "parent": {
             "user_id": 1,
-            "name": "Paulo Queiroz",
+            "name": "Helen Alexander Gullickson",
             "phone": "+5561912341234"
           }
         },
         {
           "id": 6,
-          "name": "Matheus Junqueira da Silva",
+          "name": "Stanley Cairns Chen",
           "parent": {
             "user_id": 4,
-            "name": "Matheus Junqueira",
+            "name": "Felipe Cairns Chen",
             "phone": "+5561912341235"
           }
         },
         {
           "id": 7,
-          "name": "Carol Junqueira da Silva",
+          "name": "Carmen Robertson Beene",
           "parent": {
-            "user_id": 2,
-            "name": "Sofia da Silva",
+            "user_id": 6,
+            "name": "Virginia Robertson Beene",
+            "phone": "+5561912341236"
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Math 1",
+      "students": [
+        {
+          "id": 8,
+          "name": "Lacy Pemberton Moss",
+          "parent": {
+            "user_id": 5,
+            "name": "Felipe Palmer Moss",
+            "phone": "+5561912341233"
+          }
+        },
+        {
+          "id": 9,
+          "name": "Kathleen Sosa Gullickson",
+          "parent": {
+            "user_id": 1,
+            "name": "Helen Sosa Gullickson",
+            "phone": "+5561912341234"
+          }
+        },
+        {
+          "id": 10,
+          "name": "Stanley Smith Cairns",
+          "parent": {
+            "user_id": 5,
+            "name": "Felipe Frazier Cairns",
+            "phone": "+5561912341235"
+          }
+        },
+        {
+          "id": 11,
+          "name": "Carmen Olsen Warren",
+          "parent": {
+            "user_id": 6,
+            "name": "Virginia Frazier Warren",
             "phone": "+5561912341236"
           }
         }

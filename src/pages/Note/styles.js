@@ -24,11 +24,17 @@ export const BodyMiddle = styled.View`
 
 export const BodyButtom = styled.View``;
 
+export const TitleView = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const TitleText = styled.Text`
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.7);
+  color: ${props => (props.active ? 'rgba(0, 0, 0, 0.7)' : '#aaa')};
 `;
 
 export const ListNotes = styled.FlatList`

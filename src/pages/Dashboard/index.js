@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Background from '../../components/Background';
 import { withNavigationFocus } from 'react-navigation';
+import Background from '../../components/Background';
 import dataInfo from '../../services/bilheteescolarserver.json';
 import {
   Container,
@@ -15,7 +15,6 @@ import {
   TextItem,
   ButtomExit,
 } from './styles';
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import { Body } from '../../components/Body';
 
 function Dashboard({ navigation, isFocused }) {
@@ -30,13 +29,16 @@ function Dashboard({ navigation, isFocused }) {
     let contStudent = 0;
     let contNotes = 0;
     classes.map(item => {
-      contClass = contClass + 1;
+      contClass += 1;
       item.students.map(student => {
-        contStudent = contStudent + 1;
+        contStudent += 1;
+        return student;
       });
+      return item;
     });
-    note.map(() => {
-      contNotes = contNotes + 1;
+    note.map(item => {
+      contNotes += 1;
+      return item;
     });
     setStudents(contStudent);
     setDataClass(contClass);
@@ -48,30 +50,30 @@ function Dashboard({ navigation, isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TextWelcome>Bem vindo!</TextWelcome>
-            <TextTeacher>Professor João da Silva</TextTeacher>
+            <TextWelcome>Welcome!</TextWelcome>
+            <TextTeacher>Inez J. Clark</TextTeacher>
             <Item>
               <NumberItem>
                 <TextNumber>{dataClass}</TextNumber>
               </NumberItem>
-              <TextItem>Turmas</TextItem>
+              <TextItem>Classes</TextItem>
             </Item>
             <Item>
               <NumberItem>
                 <TextNumber>{students}</TextNumber>
               </NumberItem>
-              <TextItem>Alunos</TextItem>
+              <TextItem>Students</TextItem>
             </Item>
             <Item>
               <NumberItem>
                 <TextNumber>{notes}</TextNumber>
               </NumberItem>
-              <TextItem>Bilhetes</TextItem>
+              <TextItem>Notes</TextItem>
             </Item>
           </BodyTop>
           <BodyButtom>
             <ButtomExit onPress={() => navigation.navigate('Login')}>
-              SAIR
+              LOGOUT
             </ButtomExit>
           </BodyButtom>
         </Body>
@@ -79,24 +81,6 @@ function Dashboard({ navigation, isFocused }) {
     </Background>
   );
 }
-
-// Dashboard.navigationOptions = ({ navigation }) => ({
-//   header: (
-//     <HeaderBar>
-//       <HeaderButton onPress={() => navigation.navigate('Help')}>
-//         <HeaderButtonText active={false}>Help</HeaderButtonText>
-//       </HeaderButton>
-
-//       <HeaderButton onPress={() => {}}>
-//         <HeaderButtonText active>Status</HeaderButtonText>
-//       </HeaderButton>
-
-//       <HeaderButton onPress={() => navigation.navigate('Send')}>
-//         <HeaderButtonText active={false}>Send</HeaderButtonText>
-//       </HeaderButton>
-//     </HeaderBar>
-//   ),
-// });
 
 Dashboard.propTypes = {
   navigation: PropTypes.shape({

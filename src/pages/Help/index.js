@@ -2,7 +2,6 @@ import React from 'react';
 import Background from '../../components/Background';
 
 import { Container, Title, Text } from './styles';
-import { HeaderBar, HeaderButton, HeaderButtonText } from '../../styles/header';
 import { Body } from '../../components/Body';
 
 export default function Send() {
@@ -28,21 +27,3 @@ export default function Send() {
     </Background>
   );
 }
-
-Send.navigationOptions = ({ navigation }) => ({
-  header: (
-    <HeaderBar>
-      <HeaderButton onPress={() => {}}>
-        <HeaderButtonText active>Help</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Dashboard')}>
-        <HeaderButtonText active={false}>Status</HeaderButtonText>
-      </HeaderButton>
-
-      <HeaderButton onPress={() => navigation.navigate('Send')}>
-        <HeaderButtonText active={false}>Send</HeaderButtonText>
-      </HeaderButton>
-    </HeaderBar>
-  ),
-});

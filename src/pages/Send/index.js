@@ -15,7 +15,6 @@ import {
   TitleText,
   BodyTop,
   BodyMiddle,
-  BodySend,
   BodyButtom,
   ButtonSend,
   ListClasses,
@@ -182,7 +181,7 @@ export default function Send() {
                   <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
                   <VisualizationBody>{previewDescription}</VisualizationBody>
                   <VisualizationFotter>
-                    Sincerily, Direction
+                    Sincerily, Teacher Susan.
                   </VisualizationFotter>
                 </>
               ) : (

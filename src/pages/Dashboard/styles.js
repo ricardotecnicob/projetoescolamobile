@@ -18,7 +18,12 @@ export const BodyTop = styled.View`
   max-height: ${Dimensions.get('window').height * 0.7};
 `;
 
-export const BodyButtom = styled.View``;
+export const HeaderWelcome = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const TextWelcome = styled.Text`
   font-size: 24px;
@@ -27,6 +32,8 @@ export const TextWelcome = styled.Text`
   font-weight: bold;
   margin-left: 16px;
 `;
+export const ButtonExitIcon = styled(Icon)``;
+
 export const TextTeacher = styled.Text`
   font-size: 16px;
   font-weight: bold;
@@ -71,6 +78,7 @@ export const TextItem = styled.Text`
 `;
 
 export const ButtomExit = styled(Buttom)`
-  margin: 0 25px;
-  background: #dc525a;
+  margin: 0 16px;
+  padding: 16px;
+  background-color: #fff;
 `;

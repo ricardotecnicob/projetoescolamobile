@@ -8,13 +8,14 @@ import dataInfo from '../../services/bilheteescolarserver.json';
 import {
   Container,
   BodyTop,
-  BodyButtom,
   TextWelcome,
+  HeaderWelcome,
   TextTeacher,
   Item,
   NumberItem,
   TextNumber,
   ButtomExit,
+  ButtonExitIcon,
   ItemIcon,
 } from './styles';
 import { Body } from '../../components/Body';
@@ -73,7 +74,12 @@ function Dashboard({ navigation, isFocused }) {
       <Container>
         <Body style={{ justifyContent: 'space-between' }}>
           <BodyTop>
-            <TextWelcome>Welcome!</TextWelcome>
+            <HeaderWelcome>
+              <TextWelcome>Welcome!</TextWelcome>
+              <ButtomExit onPress={() => navigation.navigate('Login')}>
+                <ButtonExitIcon name="exit-to-app" size={24} color="#c7c7c7" />
+              </ButtomExit>
+            </HeaderWelcome>
             <TextTeacher>Teacher Inez J. Clark</TextTeacher>
             <ScrollView>
               <TouchableOpacity
@@ -110,11 +116,6 @@ function Dashboard({ navigation, isFocused }) {
               </TouchableOpacity>
             </ScrollView>
           </BodyTop>
-          <BodyButtom>
-            <ButtomExit onPress={() => navigation.navigate('Login')}>
-              LOGOUT
-            </ButtomExit>
-          </BodyButtom>
         </Body>
       </Container>
     </Background>

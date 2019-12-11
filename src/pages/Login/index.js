@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
-import md5 from 'react-native-md5';
+// import md5 from 'react-native-md5';
 
 import {
   Container,

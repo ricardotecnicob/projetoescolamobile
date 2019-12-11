@@ -24,6 +24,7 @@ export const TitleView = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const TitleText = styled.Text`
@@ -34,7 +35,7 @@ export const TitleText = styled.Text`
 `;
 
 export const ListClass = styled.FlatList`
-  height: ${Dimensions.get('window').height / 3 - 40};
+  height: ${Dimensions.get('window').height * 0.65};
 `;
 
 export const Item = styled.View`
@@ -70,6 +71,8 @@ export const NewClass = styled(Buttom)`
   background: #024f83;
   margin: 8px 5px 5px 0;
 `;
+
+export const CloseButton = styled.TouchableOpacity``;
 
 export const ButtonClass = styled.TouchableOpacity`
   display: flex;
@@ -111,6 +114,7 @@ export const NoData = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  margin-bottom: 16;
 `;
 
 export const NoDataText = styled.Text`

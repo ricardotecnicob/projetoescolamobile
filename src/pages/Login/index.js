@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
+import md5 from 'react-native-md5';
 
 import {
   Container,
@@ -55,7 +56,9 @@ export default function Login({ navigation }) {
 
   function handleSubmit() {
     // dispatch(singInRequest(email, password));
+    // const hex_md5 = md5.hex_md5(password);
     // console.log(email, password);
+    // console.log('Admin', hex_md5);
     setEmail('');
     setPassword('');
     navigation.navigate('Dashboard');

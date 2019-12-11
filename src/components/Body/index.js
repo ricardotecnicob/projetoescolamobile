@@ -11,5 +11,4 @@ export const Body = styled.View`
   border-radius: 8px;
   padding: 16px 0;
   z-index: 999;
-  elevation: 2;
 `;

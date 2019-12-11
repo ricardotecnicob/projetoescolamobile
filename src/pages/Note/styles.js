@@ -18,11 +18,12 @@ export const BodyTop = styled.View`
 `;
 
 export const BodyMiddle = styled.View`
-  flex: 1;
-  margin: 10px 20px;
+  position: absolute;
+  top: 0;
+  margin: 0px;
+  padding: 15px;
+  height: 85%;
 `;
-
-export const BodyButtom = styled.View``;
 
 export const ButtonNotes = styled.TouchableOpacity`
   display: flex;
@@ -46,10 +47,7 @@ export const TitleText = styled.Text`
 `;
 
 export const ListNotes = styled.FlatList`
-  height: ${props =>
-    props.preview
-      ? Dimensions.get('window').height / 3 - 30
-      : Dimensions.get('window').height * 0.6};
+  height: ${Dimensions.get('window').height * 0.65};
 `;
 
 export const Item = styled.View`
@@ -69,47 +67,36 @@ export const TextItem = styled.Text`
   color: #024f83;
 `;
 
-export const VisualizationHeader = styled.View`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 export const CloseButton = styled.TouchableOpacity``;
 
 export const VisualizationItem = styled.View`
   flex: 1;
   background: #fff;
-  border: 1px solid #ececec;
   margin-top: 5px;
-  border-radius: 4px;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
 `;
 
 export const VisualizationTitle = styled.Text`
-  font-size: 16px;
+  font-size: 20px;
   align-self: flex-start;
   color: rgba(0, 0, 0, 0.6);
+  font-family: 'SF-Pro-Display-Regular';
 `;
 
 export const VisualizationBody = styled.Text`
-  font-size: 16px;
+  font-size: 30px;
   color: rgba(0, 0, 0, 0.6);
   text-align: justify;
+  font-family: 'SF-Pro-Display-Ultralight';
 `;
 
 export const VisualizationFotter = styled.Text`
-  font-size: 16px;
+  font-size: 20px;
   align-self: flex-end;
   color: rgba(0, 0, 0, 0.6);
-`;
-
-export const NoData = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+  font-family: 'SF-Pro-Display-Regular';
 `;
 
 export const NoDataText = styled.Text`
@@ -119,6 +106,6 @@ export const NoDataText = styled.Text`
 `;
 
 export const ButtomEdit = styled(Buttom)`
-  margin: 0 25px;
   background: #024f83;
+  margin: 8px 5px 5px 0;
 `;

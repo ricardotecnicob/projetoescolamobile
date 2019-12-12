@@ -25,7 +25,7 @@ function Dashboard({ navigation, isFocused }) {
   const [students, setStudents] = useState(0);
   const [notes, setNotes] = useState(0);
 
-  const { classes, note } = dataInfo;
+  const { classes, notes: note } = dataInfo;
 
   useEffect(() => {
     let contClass = 0;

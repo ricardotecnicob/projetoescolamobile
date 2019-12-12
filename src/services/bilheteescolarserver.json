@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "id": 1,
       "role": "admin",
@@ -42,7 +42,7 @@
       "email": "tiaamelia@bilheteescolar.com"
     }
   ],
-  "note": [
+  "notes": [
     {
       "id": 1,
       "name": "Parents Meeting",
@@ -82,29 +82,35 @@
         {
           "id": 1,
           "name": "Peggy Bates Melton",
-          "parent": {
-            "user_id": 3,
-            "name": "Armando Bates Melton",
-            "phone": "+5561912341230"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 2,
           "name": "Regina Hickman Moss",
-          "parent": {
-            "user_id": 5,
-            "name": "Ann Hickman Moss",
-            "phone": "+5561912341231"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 3,
           "name": "Jacob Edwards Clark",
-          "parent": {
-            "user_id": 2,
-            "name": "Inez Davies Clark",
-            "phone": "+5561912341232"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         }
       ]
     },
@@ -115,38 +121,46 @@
         {
           "id": 4,
           "name": "Frank Pemberton Chen",
-          "parent": {
-            "user_id": 4,
-            "name": "Felipe Pemberton Chen",
-            "phone": "+5561912341233"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 5,
           "name": "Kathleen Alexander Gullickson",
-          "parent": {
-            "user_id": 1,
-            "name": "Helen Alexander Gullickson",
-            "phone": "+5561912341234"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 6,
           "name": "Stanley Cairns Chen",
-          "parent": {
-            "user_id": 4,
-            "name": "Felipe Cairns Chen",
-            "phone": "+5561912341235"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 7,
           "name": "Carmen Robertson Beene",
-          "parent": {
-            "user_id": 6,
-            "name": "Virginia Robertson Beene",
-            "phone": "+5561912341236"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         }
       ]
     },
@@ -157,38 +171,46 @@
         {
           "id": 8,
           "name": "Lacy Pemberton Moss",
-          "parent": {
-            "user_id": 5,
-            "name": "Felipe Palmer Moss",
-            "phone": "+5561912341233"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 9,
           "name": "Kathleen Sosa Gullickson",
-          "parent": {
-            "user_id": 1,
-            "name": "Helen Sosa Gullickson",
-            "phone": "+5561912341234"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 10,
           "name": "Stanley Smith Cairns",
-          "parent": {
-            "user_id": 5,
-            "name": "Felipe Frazier Cairns",
-            "phone": "+5561912341235"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         },
         {
           "id": 11,
           "name": "Carmen Olsen Warren",
-          "parent": {
-            "user_id": 6,
-            "name": "Virginia Frazier Warren",
-            "phone": "+5561912341236"
-          }
+          "parents": [
+            {
+              "name": "José Dias da Silva",
+              "user_id": 4,
+              "phone": "+5561912341233"
+            }
+          ]
         }
       ]
     }

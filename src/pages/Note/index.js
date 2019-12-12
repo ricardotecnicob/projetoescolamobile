@@ -45,7 +45,7 @@ function Note({ isFocused }) {
   const [editable, setEditable] = useState(false);
   const [dataView, setDataView] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const { note } = dataInfo;
+  const { notes: note } = dataInfo;
 
   const allNotes = note;
 
@@ -131,24 +131,24 @@ function Note({ isFocused }) {
           </Body>
         </Container>
       ) : (
-        <BodyMiddle>
-          <TitleView>
-            <TitleText active>Preview</TitleText>
-            <TitleText active={false}>{dataVisualization.name}</TitleText>
-            <CloseButton onPress={() => setDataView(false)}>
-              <Icon name="keyboard-arrow-down" size={32} color="#024f83" />
-            </CloseButton>
-          </TitleView>
+          <BodyMiddle>
+            <TitleView>
+              <TitleText active>Preview</TitleText>
+              <TitleText active={false}>{dataVisualization.name}</TitleText>
+              <CloseButton onPress={() => setDataView(false)}>
+                <Icon name="keyboard-arrow-down" size={32} color="#024f83" />
+              </CloseButton>
+            </TitleView>
 
-          <VisualizationItem>
-            <VisualizationTitle>Dear parents,</VisualizationTitle>
-            <VisualizationBody>
-              {dataVisualization.description}
-            </VisualizationBody>
-            <VisualizationFotter>Sincerily, Teacher Susan.</VisualizationFotter>
-          </VisualizationItem>
-        </BodyMiddle>
-      )}
+            <VisualizationItem>
+              <VisualizationTitle>Dear parents,</VisualizationTitle>
+              <VisualizationBody>
+                {dataVisualization.description}
+              </VisualizationBody>
+              <VisualizationFotter>Sincerily, Teacher Susan.</VisualizationFotter>
+            </VisualizationItem>
+          </BodyMiddle>
+        )}
 
       {modalVisible && (
         <ModalNotes

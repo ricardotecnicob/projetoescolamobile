@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ToastAndroid } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '../../components/Background';
@@ -18,12 +18,6 @@ import {
   BodyButtom,
   ButtonSend,
   ListClasses,
-  VisualizationItem,
-  VisualizationTitle,
-  VisualizationBody,
-  VisualizationFotter,
-  NoData,
-  NoDataText,
 } from './styles';
 import { Body } from '../../components/Body';
 
@@ -91,18 +85,21 @@ export default function Send() {
       let studentsCheckedCount = 0;
       if (item.id === classroomId) {
         item.students.map(subitem => {
+          // Troca valor de um checkbox
           if (subitem.id === studentId) {
             subitem.checked = !subitem.checked;
           }
+          // Conta alunos marcados de uma sala
           if (subitem.checked) {
             studentsCheckedCount += 1;
           }
           return subitem;
         });
-        // Controll Class Checkbox
+        // Se todos alunos forem marcados, marcar sala
         if (studentsCheckedCount === item.students.length) {
           item.checked = true;
         }
+        // Se um dos alunos foi desmarcado em uma sala, desmarcar sala
         if (studentsCheckedCount < item.students.length) {
           item.checked = false;
         }
@@ -113,12 +110,47 @@ export default function Send() {
     setClasses(currentState);
   }
 
-  function handleSend() {
-    console.tron.log(classes);
-    Alert.alert(
-      'Sendind SMS',
-      'In a couple minutes all parents shall receive your note.'
-    );
+  async function uncheckAll() {
+    let currentState = classes;
+
+    currentState = await currentState.map(item => {
+      item.checked = false;
+      item.students.map(subitem => {
+        subitem.checked = false;
+        return subitem;
+      });
+      return item;
+    });
+
+    setClasses(currentState);
+  }
+
+  async function handleSend() {
+    let checks = [];
+
+    await classes.map(item => {
+      item.students.map(subitem => {
+        if (subitem.checked) {
+          checks = [...checks, subitem.parent.user_id];
+        }
+        return subitem;
+      });
+      return item;
+    });
+
+    if (pickedNote !== '' && checks.length > 0 && previewDescription !== '') {
+      // Alert.alert(
+      //   'Sendind SMS',
+      //   'In a couple minutes all parents shall receive your note.'
+      //   );
+      // console.tron.log(checks)
+      ToastAndroid.show('Sending.', ToastAndroid.SHORT);
+      uncheckAll();
+      setPickedNote('');
+      setPreviewDescription('');
+    } else {
+      ToastAndroid.show('Please, select at least one student and a note.', ToastAndroid.SHORT);
+    }
   }
 
   useEffect(() => {
@@ -175,22 +207,6 @@ export default function Send() {
               icon="keyboard-arrow-down"
               name="picknote"
             />
-            {/* <VisualizationItem>
-              {pickedNote !== '' ? (
-                <>
-                  <VisualizationTitle>Dear mr. and mrs.,</VisualizationTitle>
-                  <VisualizationBody>{previewDescription}</VisualizationBody>
-                  <VisualizationFotter>
-                    Sincerily, Teacher Susan.
-                  </VisualizationFotter>
-                </>
-              ) : (
-                <NoData>
-                  <Icon name="close" size={24} color="#ddd" />
-                  <NoDataText>Please, select a note to preview.</NoDataText>
-                </NoData>
-              )}
-            </VisualizationItem> */}
           </BodyMiddle>
           <BodyButtom>
             <ButtonSend onPress={handleSend}>Send SMS&#39;s</ButtonSend>

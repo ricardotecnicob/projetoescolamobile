@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Animated, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 // import md5 from 'react-native-md5';
@@ -21,7 +22,10 @@ import {
 import logo from '../../assets/meninogustavo.png';
 import cloudwelcome from '../../assets/cloudwelcome.png';
 
+import { signInRequest } from '../../store/modules/login/actions';
+
 export default function Login({ navigation }) {
+  const dispatch = useDispatch();
   const passwordRef = useRef();
 
   const [email, setEmail] = useState('');
@@ -61,7 +65,7 @@ export default function Login({ navigation }) {
     // console.log('Admin', hex_md5);
     setEmail('');
     setPassword('');
-    navigation.navigate('Dashboard');
+    dispatch(signInRequest());
   }
 
   return (

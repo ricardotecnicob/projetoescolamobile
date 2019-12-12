@@ -37,46 +37,45 @@ const option = text => {
   return optionNav;
 };
 
-const Routes = createAppContainer(
-  createSwitchNavigator(
-    {
-      Login,
-      App: createMaterialTopTabNavigator(
-        {
-          Dashboard: {
-            screen: Dashboard,
-            navigationOptions: option('Dashboard'),
+export default (isSigned = false) =>
+  createAppContainer(
+    createSwitchNavigator(
+      {
+        Login: createSwitchNavigator({ Login }),
+        App: createMaterialTopTabNavigator(
+          {
+            Dashboard: {
+              screen: Dashboard,
+              navigationOptions: option('Dashboard'),
+            },
+            Classroom: {
+              screen: Classroom,
+              navigationOptions: option('Classroom'),
+            },
+            Notes: {
+              screen: Note,
+              navigationOptions: option('Notes'),
+            },
+            Send: {
+              screen: Send,
+              navigationOptions: option('Send'),
+            },
           },
-          Classroom: {
-            screen: Classroom,
-            navigationOptions: option('Classroom'),
-          },
-          Notes: {
-            screen: Note,
-            navigationOptions: option('Notes'),
-          },
-          Send: {
-            screen: Send,
-            navigationOptions: option('Send'),
-          },
-        },
-        {
-          resetOnBlur: true,
-          tabBarOptions: {
-            keyboardHidesTabBar: true,
-            activeTintColor: '#024F83',
-            inactiveTintColor: '#aaa',
-            scrollEnabled: true,
-          },
-        }
-      ),
-    },
-    {
-      initialRouteName: 'App',
-      headerLayoutPreset: 'center',
-      headerBackTitleVisible: false,
-    }
-  )
-);
-
-export default Routes;
+          {
+            resetOnBlur: true,
+            tabBarOptions: {
+              keyboardHidesTabBar: true,
+              activeTintColor: '#024F83',
+              inactiveTintColor: '#aaa',
+              scrollEnabled: true,
+            },
+          }
+        ),
+      },
+      {
+        initialRouteName: isSigned ? 'App' : 'Login',
+        headerLayoutPreset: 'center',
+        headerBackTitleVisible: false,
+      }
+    )
+  );

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { TouchableOpacity, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import { withNavigationFocus } from 'react-navigation';
-
+import { signOut } from '../../store/modules/login/actions';
 import Background from '../../components/Background';
 import dataInfo from '../../services/bilheteescolarserver.json';
 import {
@@ -21,6 +22,7 @@ import {
 import { Body } from '../../components/Body';
 
 function Dashboard({ navigation, isFocused }) {
+  const dispatch = useDispatch();
   const [dataClass, setDataClass] = useState(0);
   const [students, setStudents] = useState(0);
   const [notes, setNotes] = useState(0);
@@ -47,6 +49,10 @@ function Dashboard({ navigation, isFocused }) {
     setDataClass(contClass);
     setNotes(contNotes);
   }, [isFocused]);
+
+  function handleLogout() {
+    dispatch(signOut());
+  }
 
   const DashItem = ({
     size,
@@ -76,7 +82,7 @@ function Dashboard({ navigation, isFocused }) {
           <BodyTop>
             <HeaderWelcome>
               <TextWelcome>Welcome!</TextWelcome>
-              <ButtomExit onPress={() => navigation.navigate('Login')}>
+              <ButtomExit onPress={handleLogout}>
                 <ButtonExitIcon name="exit-to-app" size={24} color="#c7c7c7" />
               </ButtomExit>
             </HeaderWelcome>

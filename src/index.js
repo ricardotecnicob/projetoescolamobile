@@ -5,14 +5,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 
 import { store, persistor } from './store';
-import Routes from './routes';
+import App from './App';
 
-export default function App() {
+export default function Index() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-        <Routes />
+        <App />
       </PersistGate>
     </Provider>
   );

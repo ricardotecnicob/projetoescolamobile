@@ -6,7 +6,7 @@ export default reducers => {
     {
       key: 'schoolnote',
       storage: AsyncStorage,
-      whitelist: ['note'],
+      whitelist: ['note', 'login'],
     },
     reducers
   );

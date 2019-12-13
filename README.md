@@ -20,26 +20,19 @@ Nossa solução busca aproximar a escola com pais de alunos. Com o aplicativo, a
 
 Login e Dashboard
 
-<img src="./src/assets/appentrega/login.jpeg" width="30%">
-<img src="./src/assets/appentrega/dash.jpeg" width="30%">
+<img src="./src/assets/appentrega/login.jpeg" width="30%"><img src="./src/assets/appentrega/dash.jpeg" width="30%">
 
 Turmas
 
-<img src="./src/assets/appentrega/classroom1classes.jpeg" width="30%">
-<img src="./src/assets/appentrega/classroom3classesnew.jpeg" width="30%">
-<img src="./src/assets/appentrega/editclass.jpeg" width="30%">
+<img src="./src/assets/appentrega/classroom1classes.jpeg" width="30%"><img src="./src/assets/appentrega/classroom3classesnew.jpeg" width="30%"><img src="./src/assets/appentrega/editclass.jpeg" width="30%">
 
 Estudantes
 
-<img src="./src/assets/appentrega/students.jpeg" width="30%">
-<img src="./src/assets/appentrega/classroom4studentsnew.jpeg" width="30%">
-<img src="./src/assets/appentrega/editstudents.jpeg" width="30%">
+<img src="./src/assets/appentrega/students.jpeg" width="30%"><img src="./src/assets/appentrega/classroom4studentsnew.jpeg" width="30%"><img src="./src/assets/appentrega/editstudents.jpeg" width="30%">
 
 Bilhetes
 
-<img src="./src/assets/appentrega/notes1.jpeg" width="30%">
-<img src="./src/assets/appentrega/notes3view.jpeg" width="30%">
-<img src="./src/assets/appentrega/notes4new.jpeg" width="30%">
+<img src="./src/assets/appentrega/notes1.jpeg" width="30%"><img src="./src/assets/appentrega/notes3view.jpeg" width="30%"><img src="./src/assets/appentrega/notes4new.jpeg" width="30%">
 
 Enviar
 

@@ -180,10 +180,10 @@ export default function Send() {
           },
         }).then(response => console.log(response.data));
 
-        console.tron.log({
-          'Enviando para:': checks,
-          'A Mensagem': currentNote,
-        });
+        // console.tron.log({
+        //   'Enviando para:': checks,
+        //   'A Mensagem': currentNote,
+        // });
 
         Alert.alert('Sending message', 'Soon all messages will be delivered.');
         uncheckAll();

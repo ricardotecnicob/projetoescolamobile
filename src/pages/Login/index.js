@@ -105,6 +105,7 @@ export default function Login({ navigation }) {
           />
 
           <FormText>Password</FormText>
+
           <FormInput
             icon="lock-outline"
             placeholder="********"

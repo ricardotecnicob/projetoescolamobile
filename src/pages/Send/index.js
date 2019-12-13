@@ -168,22 +168,22 @@ export default function Send() {
     if (checks.length > 0 && currentNote.name !== '' && currentNote !== null) {
       try {
         // Manda Mensagens! Gasta créditos.
-        // axios({
-        //   method: 'post',
-        //   url: 'http://ssh.espaker.com.br:8860/api/v1/sendNote',
-        //   headers: {
-        //     token_auth: '14acd1c3b2f50c1e7354668f7d0b4057',
-        //   },
-        //   data: {
-        //     note: currentNote.id,
-        //     students: checks,
-        //   },
-        // }).then(response => console.log(response.data));
+        axios({
+          method: 'post',
+          url: 'http://ssh.espaker.com.br:8860/api/v1/sendNote',
+          headers: {
+            token_auth: '14acd1c3b2f50c1e7354668f7d0b4057',
+          },
+          data: {
+            note: currentNote.id,
+            students: checks,
+          },
+        }).then(response => console.log(response.data));
 
-        // console.tron.log({
-        //   'Enviando para:': checks,
-        //   'A Mensagem': currentNote,
-        // });
+        console.tron.log({
+          'Enviando para:': checks,
+          'A Mensagem': currentNote,
+        });
 
         Alert.alert('Sending message', 'Soon all messages will be delivered.');
         uncheckAll();

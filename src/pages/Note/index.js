@@ -131,24 +131,24 @@ function Note({ isFocused }) {
           </Body>
         </Container>
       ) : (
-          <BodyMiddle>
-            <TitleView>
-              <TitleText active>Preview</TitleText>
-              <TitleText active={false}>{dataVisualization.name}</TitleText>
-              <CloseButton onPress={() => setDataView(false)}>
-                <Icon name="keyboard-arrow-down" size={32} color="#024f83" />
-              </CloseButton>
-            </TitleView>
+        <BodyMiddle>
+          <TitleView>
+            <TitleText active>Preview</TitleText>
+            <TitleText active={false}>{dataVisualization.name}</TitleText>
+            <CloseButton onPress={() => setDataView(false)}>
+              <Icon name="keyboard-arrow-down" size={32} color="#024f83" />
+            </CloseButton>
+          </TitleView>
 
-            <VisualizationItem>
-              <VisualizationTitle>Dear parents,</VisualizationTitle>
-              <VisualizationBody>
-                {dataVisualization.description}
-              </VisualizationBody>
-              <VisualizationFotter>Sincerily, Teacher Susan.</VisualizationFotter>
-            </VisualizationItem>
-          </BodyMiddle>
-        )}
+          <VisualizationItem>
+            <VisualizationTitle>Dear parents,</VisualizationTitle>
+            <VisualizationBody>
+              {dataVisualization.description}
+            </VisualizationBody>
+            <VisualizationFotter>Sincerily, Teacher Susan.</VisualizationFotter>
+          </VisualizationItem>
+        </BodyMiddle>
+      )}
 
       {modalVisible && (
         <ModalNotes
@@ -156,11 +156,11 @@ function Note({ isFocused }) {
           editable={editable}
           dismiss={modalClose}
         >
-          <Title>{editable ? 'Edição de Bilhete' : 'Cadastrar Bilhete'}</Title>
+          <Title>{editable ? 'Edit Note' : 'Create Note'}</Title>
           <ModalLabel>Note Title</ModalLabel>
           <TitleEdit
             autoCorrect={false}
-            placeholder="Digite o Título do Bilhete"
+            placeholder="Note name"
             placeholderTextColor="rgba(0,0,0,0.3)"
             disableUnderline
             value={noteTitle}
@@ -170,7 +170,7 @@ function Note({ isFocused }) {
           <DescriptionEdit
             autoCorrect={false}
             multiline
-            placeholder="Digite a descrição do Bilhete"
+            placeholder="Note description"
             placeholderTextColor="rgba(0,0,0,0.3)"
             disableUnderline
             value={noteDescription}

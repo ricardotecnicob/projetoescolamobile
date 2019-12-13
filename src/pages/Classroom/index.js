@@ -30,11 +30,11 @@ import {
 import { Title, TitleEdit, ModalLabel } from '../../components/Modal/styles';
 
 const classesToPick = [
-  { id: 0, name: '1º A Matutino' },
-  { id: 1, name: '2º A Matutino' },
-  { id: 2, name: '1º C Matutino' },
-  { id: 3, name: '4º B Vespertino' },
-  { id: 4, name: '3º B Vespertino' },
+  { id: 0, name: '1th Grade' },
+  { id: 1, name: '2th Grade' },
+  { id: 2, name: '3th Grade' },
+  { id: 3, name: '4th Grade' },
+  { id: 4, name: '5th Grade' },
 ];
 
 function Classroom({ isFocused }) {
@@ -93,8 +93,8 @@ function Classroom({ isFocused }) {
   function handleModalEditStudent(item, studentClass) {
     setEditingStudent(true);
     setStudentName(item.name);
-    setParentName(item.parent.name);
-    setPhoneNumber(item.parent.phone);
+    setParentName(item.parents[0].name);
+    setPhoneNumber(item.parents[0].phone);
     setPickedClass(studentClass);
     setShowModalStudent(true);
   }
